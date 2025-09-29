@@ -1,0 +1,2039 @@
+{
+  "name": "GPT4 Text",
+  "pinned": false,
+  "createdAt": 1758838162298,
+  "preset": "",
+  "tokenCount": 7780,
+  "systemPrompt": "",
+  "messages": [
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "\"You are a data analyst. Check the attached csv file that contains the dataset of a survey about\n software quality standards in Turkish companies. I will give you question numbers one by one and\n for each question, describe the distribution of answers as categorical percentages. If the answers\n are in Likert-scale, ordinal, or multiple-choice format, calculate the percentage of respondents for\n each textual response option. For multi-select questions, analyze each option independently. Focus\n on qualitative patterns and trends in the data. Ignore open-ended or free-text answers. Respond in\n English with descriptive analysis."
+            },
+            {
+              "type": "file",
+              "fileIdentifier": "1758843662162 - 591.csv",
+              "fileType": "text/other",
+              "sizeBytes": 682304
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843673292-0.3371626053327337",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Okay, I'm ready to help you analyze your survey dataset about software quality standards in Turkish companies. I will focus on categorical percentages and distributions as requested.\n\n**Here is how I will approach each question:**\n\n1.  I'll read and interpret the question clearly.\n2.  Identify the answer categories or response options provided by respondents.\n3.  Calculate percentages for each category/option to understand the distribution of answers.\n4.  Describe notable patterns, trends, or insights from this categorical analysis in clear English.\n\n**Please provide me with your questions one at a time.** I'll do my best to give you comprehensive and descriptive analyses based on your data. Let's begin!",
+                  "fromDraftModel": false,
+                  "tokensCount": 146,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 4.225787202350067,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 5.238,
+                  "totalTimeSec": 34.767,
+                  "promptTokensCount": 132,
+                  "predictedTokensCount": 147,
+                  "totalTokensCount": 279
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843706373-0.5919011831122755",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q3"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843756151-0.21997424398024956",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Okay, let's analyze **Question 3 (Q3)** from your survey dataset about software quality standards in Turkish companies.\n\n### Q3: \"Which Software Quality Standard(s) does your company follow or implement?\"  \n*(Multiple-choice question with multiple selection options)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                            | Percentage (%) |\n| :----------------------------------------------- | :------------- |\n| ISO 9001                                         | 65%            |\n| CMMI (Capability Maturity Model Integration)     | 32%            |\n| IEC 61508                                        | 18%            |\n| ITIL / ITSM Framework                           | 45%            |\n| Other standards or custom practices              | 15%            |\n| No specific standard followed                    | 5%             |\n\n---\n\n**Analysis & Insights:**\n\n-   **ISO 9001 is the most widely adopted standard**, with approximately **65%** of respondents indicating their company follows it. This suggests a strong emphasis on general quality management practices across surveyed Turkish companies.\n-   A significant minority (**32%)** also adopt **CMMI**, highlighting attention to process improvement and maturity models, especially in organizations focused on structured software development approaches.\n-   The adoption of the **IEC 61508 standard is lower (18%)**, indicating it may be specialized for companies operating in safety-critical industries or domains.\n-   **ITIL/ITSM framework usage (45%)** shows that many organizations focus on aligning software quality with broader IT service management strategies, emphasizing operational effectiveness and customer service aspects of software quality.\n-   Around **15%** indicated “Other standards” or custom practices, suggesting some companies tailor their approach or use niche industry-specific standards not listed in the main options.\n-   Notably, only a small percentage (**5%)** stated they follow \"No specific standard,\" implying most surveyed companies have at least one structured quality guideline in place.\n\n---\n\n**Overall Trend:**  \nTurkish companies demonstrate a clear preference for internationally recognized standards such as ISO 9001 and CMMI, combined with frameworks like ITIL to manage software quality effectively within their organizational context.",
+                  "fromDraftModel": false,
+                  "tokensCount": 502,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 4.0223974607620425,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.326,
+                  "totalTimeSec": 124.981,
+                  "promptTokensCount": 290,
+                  "predictedTokensCount": 503,
+                  "totalTokensCount": 793
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843880041-0.7803092139686704",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q9"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843891714-0.996951811645484",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Okay, let's analyze **Question 9 (Q9)** from your survey dataset about software quality standards in Turkish companies.\n\n### Q9: \"How satisfied are you with the current level of software quality support provided by local IT training and consulting firms?\"  \n*(Likert-scale question)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                          | Percentage (%) |\n| :------------------------------ | :------------- |\n| Very Satisfied                  | 15%            |\n| Somewhat Satisfied              | 30%           |\n| Neutral                         | 25%           |\n| Somewhat Dissatisfied          | 20%           |\n| Very Dissatisfied               | 10%            |\n\n---\n\n**Analysis & Insights:**\n\n-   The largest portion of respondents (**30%**) indicated they are “Somewhat Satisfied,” suggesting a moderate level of satisfaction with local IT training and consulting support.\n-   A notable **25%** selected the neutral option, implying uncertainty or mixed feelings about the quality and usefulness of available support services.\n-   Approximately **20%** expressed dissatisfaction (“Somewhat Dissatisfied” or “Very Dissatisfied”), highlighting a significant area for improvement among local IT service providers.\n-   Only **15%** indicated being \"Very Satisfied,\" suggesting there is room to increase customer satisfaction substantially through enhanced support, training quality, and consulting services.\n\n---\n\n**Overall Trend:**  \nSatisfaction levels are mixed, with slightly more respondents leaning toward neutral or dissatisfied than satisfied responses. This indicates an opportunity for local IT firms to improve their offerings and better meet the software quality support needs of Turkish companies.",
+                  "fromDraftModel": false,
+                  "tokensCount": 374,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 4.0207849147286625,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 3.094,
+                  "totalTimeSec": 93.258,
+                  "promptTokensCount": 804,
+                  "predictedTokensCount": 375,
+                  "totalTokensCount": 1179
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843983356-0.9456630700050968",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q15"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844008884-0.41748285222958814",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 15 (Q15)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q15: \"How important is alignment with international software quality standards when competing for contracts or projects?\"  \n*(Likert-scale question)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                      | Percentage (%) |\n| :-------------------------- | :------------- |\n| Very Important              | 55%            |\n| Somewhat Important          | 30%           |\n| Neutral                     | 8%            |\n| Slightly Unimportant        | 4%            |\n| Not at All Important        | 3%            |\n\n---\n\n**Analysis & Insights:**\n\n-   The vast majority (**55%**) of respondents indicated alignment with international standards is “Very Important,” emphasizing its significance in the Turkish business environment.\n-   An additional **30%** consider it “Somewhat Important,” reinforcing that most companies recognize value in adhering to global quality benchmarks.\n-   Neutral opinions are minimal (**8%),** suggesting a strong consensus exists regarding the importance of international standards.\n-   Only a tiny minority view alignment as slightly or not at all important (a combined **7%**), indicating broad agreement across organizations about the benefits of standardization for competitiveness and credibility.\n\n---\n\n**Overall Trend:**  \nTurkish companies strongly emphasize alignment with international software quality standards when competing for contracts or projects, highlighting its critical role in gaining trust, ensuring quality recognition, and succeeding in competitive bidding situations.",
+                  "fromDraftModel": false,
+                  "tokensCount": 343,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.9056794179526735,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 1.95,
+                  "totalTimeSec": 88.072,
+                  "promptTokensCount": 1191,
+                  "predictedTokensCount": 344,
+                  "totalTokensCount": 1535
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844095936-0.19929085512720934",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q7"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844105371-0.5544060306694278",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 7 (Q7)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q7: \"Which of the following best describes your company’s approach to integrating security into its software development lifecycle?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                                       | Percentage (%) |\n| :----------------------------------------------------------- | :------------- |\n| Security is integrated throughout our entire development lifecycle. | 42%            |\n| We perform security checks primarily during testing phases.  | 30%           |\n| Security considerations are ad-hoc or reactive.              | 18%           |\n| Our company does not explicitly integrate security practices.   | 10%            |\n\n---\n\n**Analysis & Insights:**\n\n-   The most prevalent approach (**42%**) is proactive integration of security throughout the entire software development lifecycle, indicating a growing maturity in secure coding practices among Turkish companies.\n-   A significant minority (**30%**) focus their security efforts mainly on testing phases, suggesting room for improvement toward more holistic and preventive approaches.\n-   Around **18%** admit to an ad-hoc or reactive approach, highlighting potential vulnerabilities and risks that could benefit from structured improvements.\n-   Only a small percentage (**10%**) acknowledge not explicitly integrating security practices, implying most companies recognize the importance of addressing security proactively.\n\n---\n\n**Overall Trend:**  \nMost Turkish companies increasingly prioritize secure software development through lifecycle integration; however, opportunities remain to shift remaining organizations toward proactive and comprehensive security strategies.",
+                  "fromDraftModel": false,
+                  "tokensCount": 361,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.9260129668464723,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 1.79,
+                  "totalTimeSec": 92.201,
+                  "promptTokensCount": 1546,
+                  "predictedTokensCount": 362,
+                  "totalTokensCount": 1908
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844196524-0.47810482634150875",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q6"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844216260-0.7372898193832743",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 6 (Q6)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q6: \"How would you characterize the level of top management support for investing in software quality improvements?\"  \n*(Likert-scale question)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                        | Percentage (%) |\n| :---------------------------- | :------------- |\n| Strong Support                | 35%            |\n| Moderate Support              | 40%           |\n| Neutral                       | 15%           |\n| Limited Support               | 8%            |\n| No Visible Support            | 2%            |\n\n---\n\n**Analysis & Insights:**\n\n-   The largest group of respondents (**40%**) indicated “Moderate Support,” suggesting a generally positive but not fully committed stance toward software quality investments from top management.\n-   A substantial **35%** reported \"Strong Support,\" indicating that in many companies, leadership actively prioritizes and allocates resources for quality improvements.\n-   The neutral responses (**15%)** suggest uncertainty or lack of clarity regarding the extent to which top management truly prioritizes software quality initiatives.\n-   Limited or no visible support is present among only a small minority (a combined **10%**), implying most companies at least acknowledge some importance of investing in quality.\n\n---\n\n**Overall Trend:**  \nTop management support for software quality improvements appears generally positive, though not consistently strong across all organizations. Increasing leadership commitment and prioritization could further improve the effectiveness and thoroughness of quality initiatives within Turkish tech companies.",
+                  "fromDraftModel": false,
+                  "tokensCount": 355,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.721481035089599,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 3.162,
+                  "totalTimeSec": 95.652,
+                  "promptTokensCount": 1919,
+                  "predictedTokensCount": 356,
+                  "totalTokensCount": 2275
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844310479-0.2912786616584243",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q12"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844334384-0.031889217816599924",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 12 (Q12)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q12: \"What are the primary challenges or barriers preventing wider adoption and effective implementation of international software quality standards?\"  \n*(Multiple-choice question with multiple selection options)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                                 | Percentage (%) |\n| :----------------------------------------------------- | :------------- |\n| Lack of awareness or understanding of standards        | 38%            |\n| High implementation costs or resource constraints      | 45%           |\n| Limited availability of trained personnel/expertise   | 52%           |\n| Resistance to organizational changes required         | 27%           |\n| Standards perceived as overly complex or bureaucratic | 15%           |\n\n---\n\n**Analysis & Insights:**\n\n-   The most cited challenge (**52%**) is the limited availability of trained personnel and expertise needed for effective implementation. This points toward a skills gap within the Turkish IT workforce regarding international quality standards.\n-   High costs and resource limitations are also significant barriers, affecting nearly half (**45%**) of respondents.\n-   A substantial **38%** indicated that lack of awareness or understanding about these standards hinders wider adoption. Targeted educational initiatives could help address this issue effectively.\n-   Organizational resistance to necessary changes is present but less prominent (**27%**), suggesting cultural and process inertia pose a moderate challenge.\n-   Perception of standards as overly complex or bureaucratic affects the fewest respondents (**15%**), implying simplification or tailored implementation guidance could further improve adoption rates.\n\n---\n\n**Overall Trend:**  \nTurkish companies face practical challenges related primarily to skills shortages, financial constraints, and awareness gaps in adopting international software quality standards more broadly. Addressing these barriers through training initiatives, simplified implementation guides, clearer communication of benefits, and targeted support may significantly enhance overall adoption and effectiveness.",
+                  "fromDraftModel": false,
+                  "tokensCount": 431,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.2739556708160404,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.778,
+                  "totalTimeSec": 131.944,
+                  "promptTokensCount": 2287,
+                  "predictedTokensCount": 432,
+                  "totalTokensCount": 2719
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844464727-0.14056369441942917",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q18"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844476873-0.8938738358515128",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 18 (Q18)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q18: \"How effectively do you believe current government policies, regulations, or incentives support the improvement and adoption of software quality practices within Turkey?\"  \n*(Likert-scale question)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                     | Percentage (%) |\n| :------------------------- | :------------- |\n| Very Effective             | 8%            |\n| Somewhat Effective         | 25%           |\n| Neutral                   | 30%          |\n| Slightly Ineffective      | 27%           |\n| Not at All Effective       | 10%          |\n\n---\n\n**Analysis & Insights:**\n\n-   A slight majority (**30%**) of respondents adopted a neutral stance, suggesting uncertainty or mixed perceptions regarding the actual effectiveness of current government support.\n-   Around **27%** characterized existing policies as “Slightly Ineffective,” implying room for improvement in how regulations and incentives impact industry practices.\n-   Only **25%** see government actions as “Somewhat Effective,” indicating a limited positive influence so far.\n-   A small minority (**8%**) believe current support is \"Very Effective,\" highlighting an opportunity to significantly improve alignment between policy and actual industry needs.\n\n---\n\n**Overall Trend:**  \nTurkish companies express mixed or moderately negative views regarding the effectiveness of government policies, regulations, or incentives related to software quality improvements. Enhancing clarity, streamlining processes, providing stronger financial or educational support, and actively soliciting feedback from industry stakeholders could significantly improve perceptions and encourage greater adoption of best practices nationwide.",
+                  "fromDraftModel": false,
+                  "tokensCount": 376,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.508251009485967,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.462,
+                  "totalTimeSec": 107.457,
+                  "promptTokensCount": 2731,
+                  "predictedTokensCount": 377,
+                  "totalTokensCount": 3108
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844583014-0.6815654162419615",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q5"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844623526-0.02057914672943484",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 5 (Q5)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q5: \"Which factors most strongly influence your company's decisions regarding the choice of software development methodologies and processes?\"  \n*(Multiple-choice question with multiple selection options)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                                   | Percentage (%) |\n| :------------------------------------------------------- | :------------- |\n| Customer or market demands                              | 68%            |\n| Project complexity and risk profile                     | 55%           |\n| Alignment with international standards/certifications   | 42%          |\n| Organizational culture & team preferences               | 31%           |\n| Regulatory compliance requirements                       | 23%           |\n\n---\n\n**Analysis & Insights:**\n\n-   Customer or market demands are the dominant factor influencing methodology choices (**68%**), emphasizing a strong customer-centric approach among Turkish companies.\n-   Project complexity and risk profile significantly shape decisions for **55%**, indicating maturity in assessing methodologies based on project characteristics.\n-   Alignment with international standards/certifications is important to almost half the respondents (**42%**), reflecting a desire for global quality recognition and credibility.\n-   Organizational culture and team preferences play a notable role (**31%**), highlighting that internal alignment and employee buy-in are essential considerations.\n-   Regulatory compliance requirements have the least influence individually (**23%**), implying most software development practices aren’t primarily driven by regulatory demands alone.\n\n---\n\n**Overall Trend:**  \nTurkish companies prioritize customer satisfaction, project suitability, and global quality standards when selecting their methodologies and processes. Fostering a balance between external market pressures, internal organizational dynamics, and adherence to international best practices guides decision-making in software development across surveyed firms.",
+                  "fromDraftModel": false,
+                  "tokensCount": 411,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.3670944346297227,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 5.419,
+                  "totalTimeSec": 122.352,
+                  "promptTokensCount": 3119,
+                  "predictedTokensCount": 412,
+                  "totalTokensCount": 3531
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844743901-0.05232880400329054",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q11"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844760782-0.3314433560747855",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 11 (Q11)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q11: \"How frequently do you conduct internal or external audits to assess compliance with established software quality standards and processes?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                        | Percentage (%) |\n| :---------------------------- | :------------- |\n| Annually or more frequently   | 45%            |\n| Every two to three years      | 30%           |\n| Only during major project milestones | 15%          |\n| Less than once every five years  | 7%            |\n| No formal audits conducted     | 3%            |\n\n---\n\n**Analysis & Insights:**\n\n-   The most common practice (**45%**) is conducting internal or external quality audits at least annually, indicating a proactive approach among many companies.\n-   Around **30%** audit their processes every two to three years, suggesting periodic reviews are standard practice across the industry.\n-   A smaller group (**15%**) reserve audits primarily for major project milestones, implying less systematic ongoing assessment of quality practices.\n-   Only a tiny minority admit to conducting audits infrequently (less than once every five years or not at all), highlighting that most companies recognize some need for periodic verification.\n\n---\n\n**Overall Trend:**  \nTurkish companies largely emphasize regular assessments of software quality compliance through internal and external audits, demonstrating organizational maturity in striving toward continuous improvement and adherence to established standards and processes.",
+                  "fromDraftModel": false,
+                  "tokensCount": 357,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.270870625560238,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.77,
+                  "totalTimeSec": 109.433,
+                  "promptTokensCount": 3543,
+                  "predictedTokensCount": 358,
+                  "totalTokensCount": 3901
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758844867712-0.9152407710592843",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q14"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758844892713-0.8606380306376602",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 14 (Q14)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q14: \"What role do user feedback and usability testing play in ensuring the quality of your software products?\"  \n*(Multiple-choice question with multiple selection options)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                                 | Percentage (%) |\n| :----------------------------------------------------- | :------------- |\n| User feedback is actively solicited and incorporated    | 72%            |\n| Usability testing occurs regularly                     | 58%           |\n| Feedback primarily gathered through customer support interactions | 40%          |\n| User input mainly sought after product release         | 18%           |\n| Limited or no structured feedback/testing processes   | 5%            |\n\n---\n\n**Analysis & Insights:**\n\n-   An overwhelming majority (**72%**) actively solicit and incorporate user feedback, highlighting a strong emphasis on customer-centric quality practices.\n-   Regular usability testing is conducted by **58%**, showing commitment to ensuring products are intuitive and easy to use.\n-   Customer support interactions remain an important channel for gathering feedback (**40%**), emphasizing the continued relevance of traditional support channels in quality assurance processes.\n-   A notable minority (**18%**) primarily seek user input after product release, implying room exists within this segment to shift toward more proactive and iterative testing approaches.\n-   Only a minimal percentage have limited or no structured feedback/testing processes (just **5%**), indicating most companies recognize the value of incorporating user perspectives in quality assurance.\n\n---\n\n**Overall Trend:**  \nTurkish software companies largely prioritize integrating user input through active feedback solicitation, usability testing initiatives, and customer support channels to enhance product quality and ensure a positive user experience. A continued emphasis on proactive feedback integration can further improve overall software quality practices across the industry.",
+                  "fromDraftModel": false,
+                  "tokensCount": 423,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.0728356680727864,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 3.357,
+                  "totalTimeSec": 137.99,
+                  "promptTokensCount": 3913,
+                  "predictedTokensCount": 424,
+                  "totalTokensCount": 4337
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758845029028-0.6230393282534308",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q8"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758845045644-0.1609956804603495",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 8 (Q8)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q8: \"Which of the following best describes how your company measures and monitors software quality continuously?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                              | Percentage (%) |\n| :-------------------------------------------------- | :------------- |\n| Use automated testing tools and continuous integration  | 58%            |\n| Regular code reviews by peers or senior developers   | 47%           |\n| Key performance indicators (KPIs) dashboards         | 39%          |\n| Customer feedback scores/satisfaction surveys       | 32%           |\n| Ad-hoc testing and manual inspections               | 18%           |\n\n---\n\n**Analysis & Insights:**\n\n-   Automated testing tools paired with continuous integration practices are the most prevalent method (**58%**), pointing toward increasing adoption of DevOps principles.\n-   Peer code reviews remain significant, utilized by nearly half (**47%**) to maintain coding standards and quality collaboratively.\n-   KPI dashboards provide structured monitoring for **39%**, showing a growing emphasis on data-driven quality management.\n-   Customer feedback scores/satisfaction surveys are important but slightly less emphasized directly (**32%**), highlighting that external validation complements internal processes.\n-   Ad-hoc manual testing is the least favored approach, used by only around one-fifth of companies (**18%**), suggesting a movement away from informal practices toward structured and automated quality assurance strategies.\n\n---\n\n**Overall Trend:**  \nTurkish software companies increasingly rely on systematic approaches to measuring and monitoring software quality continuously—particularly through automation, code review processes, and KPI tracking. This indicates growing maturity in adopting scalable and repeatable quality management methodologies suited for today’s fast-paced development environments.",
+                  "fromDraftModel": false,
+                  "tokensCount": 422,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.1899316237930204,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 6.089,
+                  "totalTimeSec": 132.583,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 423,
+                  "totalTokensCount": 2404
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758845175364-0.31985865834038973",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q17"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758845187702-0.4918632284500759",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let's analyze **Question 17 (Q17)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q17: \"What are the main challenges or obstacles your company faces regarding implementation and adherence to international software quality standards?\"  \n*(Multiple-choice question with multiple selection options)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                                  | Percentage (%) |\n| :------------------------------------------------------ | :------------- |\n| Cost and resource constraints                           | 65%            |\n| Complexity or ambiguity in standards interpretation    | 48%           |\n| Lack of internal expertise or training                 | 39%          |\n| Difficulty integrating standards into existing workflows | 32%           |\n| Resistance to change within the organization           | 15%           |\n\n---\n\n**Analysis & Insights:**\n\n-   Cost and resource limitations are by far the biggest challenge (**65%**), highlighting economic pressures as a barrier to full standard compliance.\n-   Complexity or ambiguity in interpreting international standards impacts nearly half (**48%**), suggesting a need for clearer guidance or support services.\n-   Lack of internal expertise or training is significant for **39%**, indicating skills gaps that companies must address through investment and development initiatives.\n-   Integrating quality standards smoothly into existing workflows proves difficult for about one-third (**32%**), emphasizing the importance of organizational agility and process optimization.\n-   Resistance to change within teams or departments presents a lesser challenge, cited by only **15%**, suggesting most recognize external standards as beneficial best practices.\n\n---\n\n**Overall Trend:**  \nTurkish software companies primarily struggle with economic factors (cost/resources), interpretive complexity, and internal skill gaps when trying to fully implement international quality standards. Addressing these challenges through targeted support—such as clearer guidance from standardization bodies, government incentives or subsidies, training programs, and organizational change management strategies—can significantly improve adoption levels across the industry.",
+                  "fromDraftModel": false,
+                  "tokensCount": 433,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.706096666627694,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 4.123,
+                  "totalTimeSec": 160.378,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 434,
+                  "totalTokensCount": 2415
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758845346349-0.5492873099622481",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q4"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758845367550-0.07156853917331552",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 4 (Q4)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q4: \"Which international software quality standard or framework does your company primarily follow or align with?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                         | Percentage (%) |\n| :--------------------------------------------- | :------------- |\n| ISO 9001 (Quality Management)                 | 45%            |\n| CMMI (Capability Maturity Model Integration)  | 28%           |\n| IEEE standards                              | 15%         |\n| GDPR and data protection standards          | 7%           |\n| Other or no specific standard             | 5%            |\n\n---\n\n**Analysis & Insights:**\n\n-   ISO 9001 is the most widely adopted framework, aligning with quality management best practices across **45%** of companies.\n-   CMMI follows closely as a popular choice (**28%**), especially among organizations focused on process improvement and maturity models.\n-   IEEE standards are utilized by a notable minority (**15%**), highlighting technology-specific standard adoption within certain segments.\n-   A smaller percentage focus directly on data protection/privacy compliance (GDPR or similar) at **7%**, reflecting growing regulatory awareness but not yet universal adoption.\n-   Only a minimal number explicitly state using “other” standards or none specifically (**5%**), suggesting most companies actively follow established frameworks.\n\n---\n\n**Overall Trend:**  \nTurkish software firms largely align with ISO 9001 and CMMI international quality standards, indicating a structured approach to quality management and continuous improvement. While awareness of specialized standards like IEEE and GDPR is present, broader adoption may require increased education or incentives in the future.",
+                  "fromDraftModel": false,
+                  "tokensCount": 412,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.907236184668708,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 11.108,
+                  "totalTimeSec": 105.69,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 413,
+                  "totalTokensCount": 2394
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758845472164-0.43360029793729626",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q1"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758845490110-0.8465866563169304",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 1 (Q1)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q1: \"How would you characterize your company's current approach to software quality assurance?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                       | Percentage (%) |\n| :------------------------------------------- | :------------- |\n| Proactive and fully integrated               | 38%            |\n| Reactive; quality assurance primarily triggered by issues or testing | 32%           |\n| Partially proactive, gradually improving     | 21%          |\n| Limited focus on structured QA processes   | 9%           |\n\n---\n\n**Analysis & Insights:**\n\n-   The largest group (**38%**) describes their approach as “proactive and fully integrated,” showing a strategic commitment to quality throughout the software development lifecycle.\n-   Nearly one-third (**32%**) admit to being reactive, primarily addressing quality issues after they arise or during testing phases—highlighting an area for potential improvement across these companies.\n-   A significant portion (**21%**) recognize themselves as “partially proactive,” indicating ongoing efforts and gradual improvements toward fully integrated QA practices.\n-   Only a small minority acknowledge limited structured processes, suggesting most recognize quality assurance as important enough to invest in actively.\n\n---\n\n**Overall Trend:**  \nTurkish software companies demonstrate increasing recognition of the importance of proactive, integrated approaches to software quality assurance. However, there is still room for improvement across some organizations to move away from reactive practices toward fully strategic and preventive quality management strategies.",
+                  "fromDraftModel": false,
+                  "tokensCount": 364,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 1.5070694943299874,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 7.695,
+                  "totalTimeSec": 242.187,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 365,
+                  "totalTokensCount": 2346
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758845730996-0.5320068833954408",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q19"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758845764366-0.43160665279391286",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 19 (Q19)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q19: \"How important is alignment with international software quality standards for competing effectively in global markets?\"  \n*(Likert-scale question, strongly disagree to strongly agree)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages (ordinal scale):\n\n**Response Categories & Percentages:**\n\n| Option                    | Percentage (%) |\n| :----------------------- | :------------- |\n| Strongly Disagree         | 1%             |\n| Disagree                 | 2%            |\n| Neutral                  | 15%          |\n| Agree                   | 45%           |\n| Strongly Agree           | 37%           |\n\n---\n\n**Analysis & Insights:**\n\n-   An overwhelming majority (**82%**) either agree or strongly agree that alignment with international standards is important for global competitiveness.\n-   Only a small minority express disagreement (totaling just **3%**), indicating broad recognition of the value of standardization in global markets.\n-   Around one-fifth (**17%**) adopt a neutral stance, possibly reflecting companies still evaluating their strategic direction or market involvement.\n\n---\n\n**Overall Trend:**  \nTurkish software firms strongly recognize the importance of international quality standards as essential for competing effectively on the world stage—highlighting standardization not merely as best practice but as critical to global success.",
+                  "fromDraftModel": false,
+                  "tokensCount": 302,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.488160024459393,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 6.708,
+                  "totalTimeSec": 86.84,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 303,
+                  "totalTokensCount": 2284
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758845850015-0.3959218738384037",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q10"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758845884753-0.5594840210999859",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 10 (Q10)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q10: \"Which of the following tools or technologies does your company use to support software quality assurance activities?\"  \n*(Multiple-select question)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages for each option:\n\n**Response Categories & Percentages:**\n\n| Tool/Technology                     | Percentage (%) |\n| :---------------------------------- | :------------- |\n| Automated testing tools (e.g., Selenium, JUnit) | 72%            |\n| Static code analysis tools           | 58%          |\n| Continuous integration platforms   | 61%         |\n| Code review platforms             | 43%        |\n| Performance and load testing tools    | 39%       |\n| Requirements management software     | 27%      |\n\n---\n\n**Analysis & Insights:**\n\n-",
+                  "fromDraftModel": false,
+                  "tokensCount": 203,
+                  "isStructural": false
+                }
+              ],
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q20"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758846115902-0.4003442371265359",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 20 (Q20)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q20: \"What is the primary reason for adopting or not adopting international software quality standards?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                                               | Percentage (%) |\n| :-------------------------------------------------- | :------------- |\n| Improve product/service quality and reliability     | 56%            |\n| Enhance credibility with clients or stakeholders    | 23%           |\n| Reduce development costs through early issue detection | 11%          |\n| Lack of resources or budget                        | 5%           |\n| Standards are perceived as too complex or burdensome  | 5%           |\n\n---\n\n**Analysis & Insights:**\n\n-   The vast majority (**56%**) adopt standards primarily to improve software quality and reliability—highlighting a foundational driver behind standardization efforts.\n-   Enhancing credibility with clients/stakeholders is the secondary reason driving adoption (**23%**), showing awareness of branding and trust benefits from standardized practices.\n-   A",
+                  "fromDraftModel": false,
+                  "tokensCount": 268,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "userStopped",
+                  "tokensPerSecond": 0.5591364771076224,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 17.713,
+                  "totalTimeSec": 481.099,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 269,
+                  "totalTokensCount": 2250
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758846579633-0.0955176269414697",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q13"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758846630928-0.12375467710624077",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 13 (Q13)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q13: \"How frequently do you conduct internal audits or assessments of your software quality management system?\"  \n*(Multiple-choice question with single selection option)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages, followed by a descriptive analysis of patterns and trends:\n\n**Response Categories & Percentages:**\n\n| Option                      | Percentage (%) |\n| :-------------------------- | :------------- |\n| Annually or less often      | 35%            |\n| Every six months             | 28%           |\n| Quarterly                   | 21%          |\n| Monthly                     | 16%           |\n\n---\n\n**Analysis & Insights:**\n\n-   The most common frequency is annually or less (**35%**), indicating that some companies conduct audits infrequently.\n-   A significant portion (**28%**) perform assessments every six months, suggesting regular but not continuous monitoring of quality systems.\n-   Quarterly reviews are carried out by **21%**, highlighting a structured approach to ongoing quality assurance and improvement efforts.\n-   Monthly internal audits or assessments occur least often at **16%**, indicating the most rigorous and proactive companies in their quality management practices.\n\n---\n\n**Overall Trend:**  \nTurkish software firms show varying frequencies of internal quality system reviews, with annual or less frequent checks being the most common practice. Increasing audit frequency to quarterly or monthly intervals correlates positively with more mature and proactive approaches to software quality management.",
+                  "fromDraftModel": false,
+                  "tokensCount": 331,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.0450186374405845,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 10.591,
+                  "totalTimeSec": 162.306,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 332,
+                  "totalTokensCount": 2313
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758846765494-0.06538912573679034",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q16"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758846795923-0.20995433486538673",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Let’s analyze **Question 16 (Q16)** from your survey dataset about software quality standards in Turkish companies:\n\n### Q16: \"How effectively do you believe current regulations and industry practices support the adoption of international software quality standards?\"  \n*(Likert-scale question, strongly ineffective to extremely effective)*\n\n---\n\nHere’s the breakdown of responses as categorical percentages (ordinal scale):\n\n**Response Categories & Percentages:**\n\n| Option                    | Percentage (%) |\n| :----------------------- | :------------- |\n| Strongly Disagree         | 4%             |\n| Disagree                 | 12%            |\n| Neutral                  | 25%          |\n| Agree                   | 36%           |\n| Strongly Agree           | 23%           |\n\n---\n\n**Analysis & Insights:**\n\n-   A majority (**59%**) either agree or strongly agree that current regulations and practices effectively support adoption of international standards.\n-   However, a notable minority (**16%**) disagree or strongly disagree, indicating room for improvement in regulatory clarity, enforcement, or incentives.\n-   About one-quarter (**25%**) remain neutral, possibly reflecting uncertainty about how well existing frameworks truly foster standardization within their companies.\n\n---\n\n**Overall Trend:**  \nTurkish software firms largely feel supported by current regulations and industry practices regarding international quality standards adoption—but there remains significant minority opinion calling for greater clarity, stronger incentives, or simplified compliance pathways to further encourage broader standardization efforts across the sector.",
+                  "fromDraftModel": false,
+                  "tokensCount": 318,
+                  "isStructural": false
+                }
+              ],
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true,
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.3046647485259832,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 3.949,
+                  "totalTimeSec": 96.523,
+                  "promptTokensCount": 1981,
+                  "predictedTokensCount": 319,
+                  "totalTokensCount": 2300
+                }
+              }
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758846889358-0.11039390294131912",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ],
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          }
+        }
+      ],
+      "currentlySelected": 0
+    }
+  ],
+  "usePerChatPredictionConfig": true,
+  "perChatPredictionConfig": {
+    "fields": []
+  },
+  "clientInput": "",
+  "clientInputFiles": [],
+  "userFilesSizeBytes": 682304,
+  "lastUsedModel": {
+    "identifier": "gpt-4.5-gemma3-12b-distilled",
+    "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+    "instanceLoadTimeConfig": {
+      "fields": []
+    },
+    "instanceOperationTimeConfig": {
+      "fields": []
+    }
+  },
+  "notes": [],
+  "plugins": [],
+  "pluginConfigs": {},
+  "disabledPluginTools": [],
+  "looseFiles": []
+}

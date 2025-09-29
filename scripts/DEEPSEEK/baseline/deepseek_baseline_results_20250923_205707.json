@@ -1,0 +1,451 @@
+{
+  "experiment_type": "baseline_needle_in_haystack",
+  "model": "deepseek-chat",
+  "timestamp": 1758653827.8699853,
+  "experiment_config": {
+    "max_context_tokens": 128000,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 512
+  },
+  "cost_summary": {
+    "total_cost": 0.0018438,
+    "total_input_tokens": 8560,
+    "total_output_tokens": 2305,
+    "request_count": 40,
+    "budget_limit": 5.0,
+    "budget_remaining": 4.9981562
+  },
+  "numeric_based_results": {
+    "file": "baseline_numeric_base.json",
+    "file_type": "numeric",
+    "model": "deepseek-chat",
+    "steps": [
+      {
+        "prompt_id": "1",
+        "question": "What was the percentage difference between male and female participation rates in your survey?",
+        "needle": "I recently completed a comprehensive survey research project on software quality standards in the Tu...",
+        "response": "Based on the information you provided in your query, the percentage difference between male and female participation rates in your survey was **61.64%**.\n\nYou stated this explicitly: \"the percentage difference between male and female participation rates in our survey was exactly 61.64%.\"",
+        "expected": "61.64%",
+        "score": 1,
+        "input_tokens": 249,
+        "output_tokens": 55
+      },
+      {
+        "prompt_id": "2",
+        "question": "What was the difference between the mean age and median age in your survey?",
+        "needle": "During our demographic analysis of the 246 software professionals we surveyed in Turkey, we calculat...",
+        "response": "Based on the demographic analysis you provided, the difference between the mean age and the median age was **1.32 years**.\n\nThe mean age was 33.32 years, and the median age was 32.0 years.",
+        "expected": "1.32 years",
+        "score": 1,
+        "input_tokens": 238,
+        "output_tokens": 46
+      },
+      {
+        "prompt_id": "3",
+        "question": "What was the combined percentage of respondents with graduate degrees in your survey?",
+        "needle": "When we analyzed the educational backgrounds of our 246 survey respondents, we discovered interestin...",
+        "response": "Based on the text you provided, the combined percentage of respondents with graduate degrees (Master's and PhD) was **29.2%**.",
+        "expected": "29.2%",
+        "score": 1,
+        "input_tokens": 242,
+        "output_tokens": 28
+      },
+      {
+        "prompt_id": "4",
+        "question": "What was the combined percentage of respondents from the top three cities in your survey?",
+        "needle": "One of the most striking findings from our geographic analysis of the 246 software professionals was...",
+        "response": "Based on the text you provided, the combined percentage of respondents from the top three cities (Ankara, Istanbul, and Izmir) was **65.0%**.",
+        "expected": "65.0%",
+        "score": 1,
+        "input_tokens": 244,
+        "output_tokens": 34
+      },
+      {
+        "prompt_id": "5",
+        "question": "How many professionals in your survey worked in companies with more than 1000 employees?",
+        "needle": "Our organizational size analysis revealed fascinating insights about where Turkish software professi...",
+        "response": "Based on the data you provided, **60 professionals** in your survey worked in companies with more than 1000 employees.\n\nThis was calculated from the 246 respondents, where 24.4% (or 0.244) represented this group:\n0.244 × 246 = 60.024, which rounds to exactly 60 professionals.",
+        "expected": "60 professionals",
+        "score": 1,
+        "input_tokens": 208,
+        "output_tokens": 71
+      },
+      {
+        "prompt_id": "6",
+        "question": "How many respondents worked in the Information Technology sector in your survey?",
+        "needle": "When we examined the industry sectors where our 246 survey participants worked, the dominance of Inf...",
+        "response": "Based on the text you provided, **126 respondents** worked in the Information Technology sector.\n\nThe text states: \"Our analysis showed that 51.2% of respondents worked in the IT sector, which translates to 126 professionals.\"",
+        "expected": "126 professionals",
+        "score": 1,
+        "input_tokens": 243,
+        "output_tokens": 47
+      },
+      {
+        "prompt_id": "7",
+        "question": "How many respondents regularly encounter requirements documentation problems in your survey?",
+        "needle": "One of the most concerning findings from our software development practices survey was about require...",
+        "response": "Based on the text you provided, **158 respondents** regularly encounter requirements documentation problems.\n\nThis is calculated from the total number of survey participants (246) and the combined percentage who face the issue frequently or always (64.2%).\n\n*   Total Participants: 246\n*   Percentage with Regular Problems: 64.2%\n*   Calculation: 246 × 0.642 = 157.932, which rounds to **158 respondents**.",
+        "expected": "158 respondents",
+        "score": 1,
+        "input_tokens": 245,
+        "output_tokens": 90
+      },
+      {
+        "prompt_id": "8",
+        "question": "How many respondents experience acceptance criteria problems in your survey?",
+        "needle": "Our investigation into acceptance criteria problems revealed widespread issues across the Turkish so...",
+        "response": "Based on the text you provided, 193 respondents experience acceptance criteria problems.\n\nThis number is derived from the calculation you mentioned: 77.7% of the 246 total participants.\n\n*   Total Survey Participants: 246\n*   Percentage with Problems (Frequently + Sometimes + Always): 77.7%\n*   Calculation: 246 x 0.777 = 191.142\n*   Rounded to a whole person, this is **191 respondents**.\n\nHowever, you also explicitly state the total is 193 respondents. The slight discrepancy is likely due to rounding the percentage (77.7%) from the actual, more precise calculation.\n\nTherefore, the final answer from your investigation is **193 respondents**.",
+        "expected": "193 respondents",
+        "score": 1,
+        "input_tokens": 241,
+        "output_tokens": 145
+      },
+      {
+        "prompt_id": "9",
+        "question": "How many respondents experience effort estimation problems when management determines duration in your survey?",
+        "needle": "A particularly interesting finding from our survey was about effort estimation problems when upper m...",
+        "response": "Based on the text you provided, **149 respondents** experience effort estimation problems when upper management determines the project duration.\n\nThis number is calculated by combining the respondents who \"frequently,\" \"sometimes,\" or \"always\" encounter the issue, which totals 60.5% of the 246 participants (0.605 * 246 = 149).",
+        "expected": "149 respondents",
+        "score": 1,
+        "input_tokens": 243,
+        "output_tokens": 70
+      },
+      {
+        "prompt_id": "10",
+        "question": "How many respondents regularly experience team communication problems in your survey?",
+        "needle": "When we analyzed team communication issues in our survey of 246 software professionals, we found som...",
+        "response": "Based on the information you provided, the number of respondents who regularly experience team communication problems is **44**.\n\nThis is calculated from the data you gave:\n*   Total survey respondents: 246\n*   Percentage who regularly experience problems (frequently + always): 17.9%\n\nThe calculation is: 246 respondents * 17.9% = 44.034, which rounds to exactly **44 respondents** as you stated.",
+        "expected": "44 respondents",
+        "score": 1,
+        "input_tokens": 245,
+        "output_tokens": 88
+      },
+      {
+        "prompt_id": "11",
+        "question": "How many respondents consistently encounter code review problems in your survey?",
+        "needle": "Our analysis of code review practices revealed concerning patterns among the 246 surveyed profession...",
+        "response": "Based on the text you provided, the number of respondents who consistently encounter code review problems is **61**.\n\nThis is stated directly in your analysis: \"...it represented 24.8% of our sample, which equals exactly 61 respondents...\"",
+        "expected": "61 respondents",
+        "score": 1,
+        "input_tokens": 229,
+        "output_tokens": 48
+      },
+      {
+        "prompt_id": "12",
+        "question": "How many companies in your survey are confirmed to export software internationally?",
+        "needle": "One of the positive findings from our survey was about international market participation. When we a...",
+        "response": "Based on the text you provided, **142 companies** are confirmed to export software internationally.\n\nThis is calculated from the total of 246 respondents, where 57.7% (which is 0.577 * 246 = 141.942) translates to exactly 142 companies.",
+        "expected": "142 companies",
+        "score": 1,
+        "input_tokens": 207,
+        "output_tokens": 58
+      },
+      {
+        "prompt_id": "13",
+        "question": "How many respondents use pure Agile versus pure Waterfall methodology in your survey?",
+        "needle": "Our methodology analysis revealed interesting patterns in how Turkish software companies approach de...",
+        "response": "Based on the text you provided, the survey results are as follows:\n\n*   **Pure Agile methodology:** 145 professionals\n*   **Pure Waterfall methodology:** 24 professionals",
+        "expected": "145 vs 24 respondents",
+        "score": 1,
+        "input_tokens": 218,
+        "output_tokens": 36
+      },
+      {
+        "prompt_id": "14",
+        "question": "How many organizations in your survey lack software quality units?",
+        "needle": "A concerning finding from our organizational structure analysis was the lack of formal quality units...",
+        "response": "Based on the text you provided, **118 organizations** in the survey lack software quality units.\n\nThis is calculated from the total of 246 companies, where 48.0% lack the units:\n246 companies * 0.48 = 118.08 organizations, which rounds to 118.",
+        "expected": "118 organizations",
+        "score": 1,
+        "input_tokens": 217,
+        "output_tokens": 60
+      },
+      {
+        "prompt_id": "15",
+        "question": "How many organizations conduct comprehensive measurements in all eight categories in your survey?",
+        "needle": "Our measurement practices analysis revealed both concerning and encouraging trends. Among the 246 or...",
+        "response": "Based on the text you provided, the number of organizations that conduct comprehensive measurements in all eight categories is **14**.\n\nThis is stated directly: \"This small percentage represents exactly 14 companies that have implemented thorough measurement practices...\"",
+        "expected": "14 companies",
+        "score": 1,
+        "input_tokens": 228,
+        "output_tokens": 44
+      },
+      {
+        "prompt_id": "16",
+        "question": "How many respondents lack knowledge about their organization's quality certificates in your survey?",
+        "needle": "Our investigation into quality certification awareness revealed a transparency problem in Turkish or...",
+        "response": "Based on the text you provided, **108 respondents** lack knowledge about their organization's quality certificates.\n\nThis is calculated from the total number of respondents (246) and the percentage who lack knowledge (43.9%).\n\n*   246 respondents × 43.9% = 107.994\n*   The text states this percentage \"translates to exactly 108 professionals.\"",
+        "expected": "108 professionals",
+        "score": 1,
+        "input_tokens": 208,
+        "output_tokens": 75
+      },
+      {
+        "prompt_id": "17",
+        "question": "How many respondents have no knowledge of software quality standards in your survey?",
+        "needle": "A major concern from our standards knowledge assessment was the widespread lack of awareness. Among ...",
+        "response": "Based on the text you provided, **118 respondents** have no knowledge of software quality standards.\n\nThe text states: \"Among our 246 survey participants, we found that 48.0% have no knowledge... This alarming percentage represents exactly 118 respondents.\"",
+        "expected": "118 respondents",
+        "score": 1,
+        "input_tokens": 210,
+        "output_tokens": 52
+      },
+      {
+        "prompt_id": "18",
+        "question": "How many respondents require standards training according to your needs assessment?",
+        "needle": "Our training needs assessment revealed an overwhelming demand for education in quality standards. Am...",
+        "response": "Based on the information you provided in your needs assessment, **192 respondents** require standards training.\n\nThis is calculated from the data you gave: 78.0% of the 246 professionals surveyed.\n\n*   246 professionals surveyed\n*   78.0% expressed a need\n*   246 x 0.780 = 191.88, which rounds to **192 respondents**",
+        "expected": "192 respondents",
+        "score": 1,
+        "input_tokens": 204,
+        "output_tokens": 77
+      },
+      {
+        "prompt_id": "19",
+        "question": "How many professionals personally consult international standards for process improvement in your survey?",
+        "needle": "Our analysis of individual standards usage revealed concerning adoption rates among professionals. W...",
+        "response": "Based on the text you provided, **77 professionals** personally consult international standards for process improvement.\n\nThis is stated directly: \"only 31.3% said yes. This percentage represents exactly 77 professionals...\"",
+        "expected": "77 professionals",
+        "score": 1,
+        "input_tokens": 216,
+        "output_tokens": 42
+      },
+      {
+        "prompt_id": "20",
+        "question": "How many respondents believe Turkey lacks sufficient knowledge about software quality standards in your survey?",
+        "needle": "Perhaps the most striking finding from our national competency assessment was the overwhelming conse...",
+        "response": "Based on the text you provided, **215 respondents** believe that Turkey lacks sufficient knowledge about software quality standards.\n\nThe text explicitly states: \"This remarkable percentage represents exactly 215 respondents who share this concern.\" The percentage given (87.4%) is calculated from the total number of respondents (246).",
+        "expected": "215 respondents",
+        "score": 1,
+        "input_tokens": 215,
+        "output_tokens": 60
+      }
+    ],
+    "accuracy": 1.0,
+    "total_prompts": 20,
+    "correct_answers": 20,
+    "processing_time": 118.48169779777527,
+    "cost_info": {
+      "input_tokens": 4550,
+      "output_tokens": 1226,
+      "cost": 0.00098028
+    }
+  },
+  "text_based_results": {
+    "file": "baseline_text_base.json",
+    "file_type": "text",
+    "model": "deepseek-chat",
+    "steps": [
+      {
+        "prompt_id": "1",
+        "question": "What was the most dominant professional role in your Turkish software industry study?",
+        "needle": "I conducted an extensive research study on the Turkish software industry, surveying 246 professional...",
+        "response": "Based on the detailed profile analysis from your study, the most dominant professional role was **software engineer**.\n\nThis finding was particularly significant as it highlighted the core technical focus of the Turkish software development workforce, with software engineers representing the largest single category among all the professional positions surveyed.",
+        "expected": "software engineer",
+        "score": 1,
+        "input_tokens": 236,
+        "output_tokens": 54
+      },
+      {
+        "prompt_id": "2",
+        "question": "What was the most critical requirements management challenge in your research?",
+        "needle": "During my comprehensive research on software development challenges in Turkey, I investigated requir...",
+        "response": "Based on my research, the most critical requirements management challenge identified was **requirement completeness**.\n\nThis finding was based on the analysis of responses from 246 software professionals in Turkey. The issue of incomplete requirements was deemed primary because it creates cascading problems that negatively impact the entire software development lifecycle, from initial design decisions to final testing strategies.",
+        "expected": "requirement completeness",
+        "score": 1,
+        "input_tokens": 211,
+        "output_tokens": 67
+      },
+      {
+        "prompt_id": "3",
+        "question": "What was the most destructive project management dysfunction pattern you identified?",
+        "needle": "In my study of Turkish software development practices, I examined project management dysfunction pat...",
+        "response": "Based on my analysis, the most destructive project management dysfunction pattern identified was **upper management interference in effort estimation**.\n\nThis pattern was particularly problematic because it systematically undermined the technical team's expertise, leading to unrealistic expectations that subsequently cascaded into multiple other project failures.",
+        "expected": "upper management interference in effort estimation",
+        "score": 1,
+        "input_tokens": 214,
+        "output_tokens": 51
+      },
+      {
+        "prompt_id": "4",
+        "question": "What was the most significant communication challenge in Turkish development teams?",
+        "needle": "As part of my comprehensive research on Turkish software development teams, I analyzed communication...",
+        "response": "Based on the text you provided, the most significant communication challenge identified in Turkish software development teams was **technical competency gaps**.\n\nThis was described as the primary barrier because it directly affects the team's ability to collaborate effectively and share knowledge.",
+        "expected": "technical competency gaps",
+        "score": 1,
+        "input_tokens": 209,
+        "output_tokens": 46
+      },
+      {
+        "prompt_id": "5",
+        "question": "What was the most mature quality assurance practice you identified?",
+        "needle": "During my investigation of quality assurance practices in Turkish software organizations, I surveyed...",
+        "response": "Based on your investigation, the most mature quality assurance practice you identified was **code reviews**.\n\nYou highlighted that it stood out because it was:\n*   The most systematically implemented across the organizations surveyed.\n*   The practice with the strongest correlation to overall quality outcomes.",
+        "expected": "code reviews",
+        "score": 1,
+        "input_tokens": 183,
+        "output_tokens": 52
+      },
+      {
+        "prompt_id": "6",
+        "question": "What was the strongest indicator of international competitiveness in your study?",
+        "needle": "In my study of international competitiveness factors affecting Turkish software companies, I analyze...",
+        "response": "Based on the findings of your study, the strongest indicator of international competitiveness for Turkish software companies was **international software export capability**.\n\nThis factor was not only a key metric on its own but also served as a reliable indicator of a company's overall health, as it consistently correlated with the adoption of higher quality standards and better organizational practices.",
+        "expected": "international software export capability",
+        "score": 1,
+        "input_tokens": 196,
+        "output_tokens": 66
+      },
+      {
+        "prompt_id": "7",
+        "question": "What was the most adopted development methodology in your Turkish software study?",
+        "needle": "Through my analysis of development methodology adoption patterns in Turkish software organizations, ...",
+        "response": "Based on the text you provided, the most adopted development methodology in your study of Turkish software organizations was **Agile**.\n\nYour analysis states this directly: \"My research revealed that the most adopted development methodology was Agile.\"",
+        "expected": "Agile",
+        "score": 1,
+        "input_tokens": 200,
+        "output_tokens": 43
+      },
+      {
+        "prompt_id": "8",
+        "question": "What was the most common organizational quality infrastructure characteristic?",
+        "needle": "During my investigation of organizational quality infrastructure in Turkish software companies, I an...",
+        "response": "Based on the text you provided, the most common organizational quality infrastructure characteristic was:\n\n**The absence of formal quality units.**\n\nThis finding was revealed by your analysis of 246 professional responses and highlights a significant gap in systematic quality management within the Turkish software industry.",
+        "expected": "absence of formal quality units",
+        "score": 1,
+        "input_tokens": 200,
+        "output_tokens": 51
+      },
+      {
+        "prompt_id": "9",
+        "question": "What was the most common process maturity level in your classification system?",
+        "needle": "In my study of software process maturity in Turkish organizations, I developed a classification syst...",
+        "response": "Based on the information you provided, the most common process maturity level in your classification system was:\n\n**Informal processes without documentation.**\n\nThis finding indicated that most of the 246 Turkish organizations surveyed relied on tribal knowledge rather than systematic, documented procedures.",
+        "expected": "informal processes without documentation",
+        "score": 1,
+        "input_tokens": 202,
+        "output_tokens": 49
+      },
+      {
+        "prompt_id": "10",
+        "question": "What was the most prevalent testing strategy in your diversity framework?",
+        "needle": "Through my research on testing strategy diversity in Turkish software organizations, I constructed a...",
+        "response": "Based on the research you described, the most prevalent testing strategy identified in your framework was **minimal user acceptance testing**.\n\nThis finding was derived from the analysis of 246 professional responses and indicated a tendency for Turkish software organizations to adopt basic, high-level testing practices rather than implementing more rigorous, multi-layered testing strategies.",
+        "expected": "minimal user acceptance testing",
+        "score": 1,
+        "input_tokens": 206,
+        "output_tokens": 64
+      },
+      {
+        "prompt_id": "11",
+        "question": "What was the most common automation integration pattern you identified?",
+        "needle": "During my investigation of automation tool integration patterns across the software development life...",
+        "response": "Based on the information you provided in your investigation, the most common automation integration pattern you identified was **minimal version control usage**.\n\nThis finding, as you noted, indicates that many organizations are still in the early stages of adopting automation across their software development lifecycle.",
+        "expected": "minimal version control usage",
+        "score": 1,
+        "input_tokens": 198,
+        "output_tokens": 52
+      },
+      {
+        "prompt_id": "12",
+        "question": "What was the most significant educational gap you identified?",
+        "needle": "In my study of educational gaps affecting new employee integration in Turkish software companies, I ...",
+        "response": "Based on the information you provided in your study, the most significant educational gap you identified was:\n\n**Quality Standards Education.**\n\nYour analysis of the responses from 246 professionals revealed that this deficiency directly impacted both the development of an organizational quality culture and the effectiveness of new employees.\n\nThe second paragraph, while a comprehensive overview of blockchain technology, does not relate to the findings of your educational gap study.",
+        "expected": "quality standards education",
+        "score": 1,
+        "input_tokens": 190,
+        "output_tokens": 78
+      },
+      {
+        "prompt_id": "13",
+        "question": "What was the most critical knowledge deficiency you identified?",
+        "needle": "Through my analysis of standards knowledge deficiencies affecting Turkish software professionals, I ...",
+        "response": "Based on my analysis, the most critical knowledge deficiency I identified was **awareness of international quality standards**.\n\nThis gap was fundamental because it limited the professionals' ability to even begin implementing quality improvement initiatives. Without a basic awareness of the standards that exist, the principles they contain, and their potential benefits, professionals cannot effectively adopt or apply them in their work.",
+        "expected": "awareness of international quality standards",
+        "score": 1,
+        "input_tokens": 190,
+        "output_tokens": 71
+      },
+      {
+        "prompt_id": "14",
+        "question": "What was the most recognized benefit of quality standards in your framework?",
+        "needle": "During my investigation of how Turkish software professionals perceive the value of international qu...",
+        "response": "Based on the information you provided, the most recognized benefit of quality standards in your framework was **process improvement**.\n\nYou stated this clearly: \"My analysis revealed that the most recognized benefit of quality standards was process improvement. This benefit consistently received the strongest agreement across all participant categories.\"",
+        "expected": "process improvement",
+        "score": 1,
+        "input_tokens": 200,
+        "output_tokens": 55
+      },
+      {
+        "prompt_id": "15",
+        "question": "What was the most significant implementation barrier for quality standards adoption?",
+        "needle": "In my study of obstacles preventing quality standards adoption in Turkish software organizations, I ...",
+        "response": "Based on the text you provided, the most significant implementation barrier for quality standards adoption was **human resource limitations**.\n\nYour analysis explicitly states: \"My comprehensive analysis revealed that the most significant implementation barrier was human resource limitations.\"",
+        "expected": "human resource limitations",
+        "score": 1,
+        "input_tokens": 196,
+        "output_tokens": 43
+      },
+      {
+        "prompt_id": "16",
+        "question": "What was the most notable characteristic of individual versus organizational adoption patterns?",
+        "needle": "Through my analysis contrasting individual versus organizational quality standards adoption patterns...",
+        "response": "Based on your analysis, the most notable characteristic of individual versus organizational adoption patterns was **the gap between individual awareness and organizational implementation**.\n\nThis disconnect was consistent across different organization sizes and sectors.",
+        "expected": "gap between individual awareness and organizational implementation",
+        "score": 1,
+        "input_tokens": 196,
+        "output_tokens": 37
+      },
+      {
+        "prompt_id": "17",
+        "question": "What was the most critical strategic priority for national competency development?",
+        "needle": "During my development of a strategic framework for national competency development in software quali...",
+        "response": "Based on your research, the most critical strategic priority for national competency development was **systematic competency development**.\n\nThis priority was identified as fundamental to addressing the widespread challenges in quality standards knowledge at a national level.",
+        "expected": "systematic competency development",
+        "score": 1,
+        "input_tokens": 195,
+        "output_tokens": 41
+      },
+      {
+        "prompt_id": "18",
+        "question": "What was the most influential cultural factor affecting quality standards adoption?",
+        "needle": "In my assessment of cultural factors affecting quality standards adoption in Turkish software organi...",
+        "response": "Based on the text you provided, the most influential cultural factor affecting quality standards adoption was **management support**.\n\nYour research states this directly: \"My research revealed that the most influential cultural factor was management support. This factor consistently determined the success or failure of quality improvement initiatives...\"",
+        "expected": "management support",
+        "score": 1,
+        "input_tokens": 181,
+        "output_tokens": 54
+      },
+      {
+        "prompt_id": "19",
+        "question": "What was the most effective development pathway for quality standards expertise?",
+        "needle": "Through my analysis of professional development pathways for Turkish software professionals to devel...",
+        "response": "Based on your analysis, the most effective development pathway for quality standards expertise was **workplace development programs**.\n\nThis pathway demonstrated the strongest correlation with both sustained competency improvement and the practical application of knowledge.",
+        "expected": "workplace development programs",
+        "score": 1,
+        "input_tokens": 188,
+        "output_tokens": 39
+      },
+      {
+        "prompt_id": "20",
+        "question": "What was the most important strategic direction for advancing quality standards adoption?",
+        "needle": "In my comprehensive synthesis of strategic directions for advancing software quality standards adopt...",
+        "response": "Based on the text you provided, the most important strategic direction for advancing quality standards adoption was **short-term development objectives**.\n\nYour synthesis explicitly states: \"I determined that the most important strategic direction was short-term development objectives.\" This timeframe was selected because it offered the best balance of achievability and impact for initiating systematic quality improvement.",
+        "expected": "short-term development objectives",
+        "score": 1,
+        "input_tokens": 219,
+        "output_tokens": 66
+      }
+    ],
+    "accuracy": 1.0,
+    "total_prompts": 20,
+    "correct_answers": 20,
+    "processing_time": 115.15454387664795,
+    "cost_info": {
+      "input_tokens": 4010,
+      "output_tokens": 1079,
+      "cost": 0.00086352
+    }
+  }
+}

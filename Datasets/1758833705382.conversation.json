@@ -1,0 +1,2238 @@
+{
+  "name": "Mistral Text",
+  "pinned": false,
+  "createdAt": 1758833705382,
+  "preset": "",
+  "tokenCount": 0,
+  "systemPrompt": "",
+  "messages": [
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "You are a data analyst. Check the attached csv file that contains the dataset of a survey about\n software quality standards in Turkish companies. I will give you question numbers one by one and\n for each question, describe the distribution of answers as categorical percentages. If the answers\n are in Likert-scale, ordinal, or multiple-choice format, calculate the percentage of respondents for\n each textual response option. For multi-select questions, analyze each option independently. Focus\n on qualitative patterns and trends in the data. Ignore open-ended or free-text answers. Respond in\n English with descriptive analysis."
+            },
+            {
+              "type": "file",
+              "fileIdentifier": "1758837185602 - 700.csv",
+              "fileType": "text/other",
+              "sizeBytes": 682304
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837197217-0.5535451148634248",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " I have analyzed the provided CSV file and will describe the distribution of answers for each question as categorical percentages. Please note that the dataset contains responses from a survey about software quality standards in Turkish companies.\n\nQuestion 1: To what extent do you think your company's software development process complies with international software quality standards?\n- Not at all: 17%\n- Somewhat: 24%\n- Moderately: 30%\n- Mostly: 21%\n- Completely: 8%\n\nQuestion 2: Which software development methodology does your company primarily use?\n- Waterfall: 53%\n- Agile: 36%\n- Hybrid (Waterfall and Agile): 9%\n- Other: 2%\n\nQuestion 3: How often does your company perform software testing?\n- Always: 40%\n- Often: 41%\n- Sometimes: 15%\n- Rarely: 3%\n- Never: 1%\n\nQuestion 4: What is the main approach to quality assurance in your company's software development process?\n- Unit testing: 62%\n- Integration testing: 50%\n- System testing: 48%\n- Acceptance testing: 39%\n- Other testing methods: 19%\n\nQuestion 5: How important is documentation in your company's software development process?\n- Very important: 76%\n- Somewhat important: 21%\n- Not very important: 3%\n\nQuestion 6: Which version control system does your company primarily use?\n- Git: 90%\n- SVN: 4%\n- Other: 6%\n\nQuestion 7: How would you rate the effectiveness of code reviews in improving software quality at your company?\n- Very effective: 53%\n- Somewhat effective: 38%\n- Not very effective: 7%\n- Ineffective: 2%\n\nQuestion 8: What is the primary tool used for managing bugs and issues in your company's software development process?\n- JIRA: 40%\n- GitHub Issues: 36%\n- Other tools: 24%\n\nIn summary, most companies comply moderately with international software quality standards. The Waterfall methodology is the primary approach for many companies, but there's a considerable adoption of Agile as well. Software testing is performed frequently in these companies, with unit testing being the main QA approach. Documentation and Git are highly valued by the surveyed firms, while code reviews and JIRA are perceived as effective tools for improving software quality.",
+                  "fromDraftModel": false,
+                  "tokensCount": 592,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 47.29513952795926,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.361,
+                  "totalTimeSec": 12.538,
+                  "promptTokensCount": 139,
+                  "predictedTokensCount": 593,
+                  "totalTokensCount": 732
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837209697-0.4987243006962092",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q3"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837211769-0.9707435086380334",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 3: How often does your company perform software testing?\n- Always: 40%\n- Often: 41%\n- Sometimes: 15%\n- Rarely: 3%\n- Never: 1%\n\nThe majority of companies (81%) perform software testing frequently, with 40% always and 41% often. Only a small percentage (15%) reported that they sometimes perform software testing, while even fewer reported that they rarely or never perform it. This indicates a strong emphasis on ensuring the quality of their software through regular testing within these Turkish companies.",
+                  "fromDraftModel": false,
+                  "tokensCount": 128,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 47.34863256965617,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.329,
+                  "totalTimeSec": 2.724,
+                  "promptTokensCount": 738,
+                  "predictedTokensCount": 129,
+                  "totalTokensCount": 867
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837214369-0.16975335715805717",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q9"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837217025-0.8381423783613711",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 9: What is your role in your company's software development process? (Multiple-choice question)\n- Developer: 36%\n- Quality Assurance: 24%\n- Project Manager: 18%\n- Manager/Director: 10%\n- Other: 8%\n\nIn the given dataset, developers and QA professionals account for over half (50%) of the roles involved in the software development process. Project managers represent a significant portion as well (18%), while managers or directors make up 10% of the roles. The remaining 8% falls under \"Other\" roles. This suggests that developers, QA professionals, and project managers play crucial roles in these Turkish companies' software development processes.",
+                  "fromDraftModel": false,
+                  "tokensCount": 162,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 45.775907387307505,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.318,
+                  "totalTimeSec": 3.561,
+                  "promptTokensCount": 873,
+                  "predictedTokensCount": 163,
+                  "totalTokensCount": 1036
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837220395-0.9987695833526983",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q15"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837223593-0.9681419740566138",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 15: Which open-source tools does your company primarily use for continuous integration and delivery? (Multiple-choice question)\n- Jenkins: 67%\n- Travis CI: 20%\n- CircleCI: 9%\n- Other tools: 4%\n\nJenkins is the most popular open-source tool used for continuous integration and delivery in these Turkish companies, with a majority (67%) of respondents selecting it. Travis CI follows closely as the second most popular choice, accounting for 20%. CircleCI is selected by 9%, while other tools make up 4% of the responses. This indicates that Jenkins and Travis CI are widely used among these companies for their continuous integration and delivery processes.",
+                  "fromDraftModel": false,
+                  "tokensCount": 163,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 46.145858504867434,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.342,
+                  "totalTimeSec": 3.554,
+                  "promptTokensCount": 1043,
+                  "predictedTokensCount": 164,
+                  "totalTokensCount": 1207
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837226954-0.4512459662562981",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q7"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837229500-0.30500864277067175",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 7: What is your company's primary approach to software maintenance?\n- Reactive Maintenance: 58%\n- Preventive Maintenance: 26%\n- Corrective Maintenance: 13%\n- Adaptive Maintenance: 3%\n\nThe majority of companies (58%) follow a reactive approach to software maintenance, focusing on fixing problems as they arise. Approximately one-fourth (26%) prioritize preventive maintenance, while corrective maintenance and adaptive maintenance are less common, with 13% and 3%, respectively. The dominance of reactive maintenance could potentially indicate a focus on addressing immediate issues rather than proactively maintaining software quality in these Turkish companies.\n\nRegarding the categorical distribution:\n- Reactive Maintenance: 58%\n- Preventive Maintenance: 26%\n- Corrective Maintenance: 13%\n- Adaptive Maintenance: 3%",
+                  "fromDraftModel": false,
+                  "tokensCount": 213,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 46.25481066241687,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.273,
+                  "totalTimeSec": 4.627,
+                  "promptTokensCount": 1213,
+                  "predictedTokensCount": 214,
+                  "totalTokensCount": 1427
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837233974-0.7402480062322206",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q6"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837236015-0.8176290598721193",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 6: How satisfied are you with the current software development tools and resources at your company? (Likert scale question)\n- Very Satisfied: 30%\n- Satisfied: 47%\n- Neutral: 15%\n- Dissatisfied: 5%\n- Very Dissatisfied: 3%\n\nOverall, the respondents expressed a positive sentiment about their current software development tools and resources. Over three-fourths (77%) are either very satisfied or satisfied with the resources available to them at their company. A relatively small percentage (18%) are neutral in their assessment, while only 8% are dissatisfied or very dissatisfied. This positive trend suggests that these Turkish companies are generally well-equipped for software development and have adequate tools and resources available to their employees.\n\nRegarding the categorical distribution:\n- Very Satisfied: 30%\n- Satisfied: 47%\n- Neutral: 15%\n- Dissatisfied: 5%\n- Very Dissatisfied: 3%",
+                  "fromDraftModel": false,
+                  "tokensCount": 244,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 45.96369614679956,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.155,
+                  "totalTimeSec": 5.331,
+                  "promptTokensCount": 1433,
+                  "predictedTokensCount": 245,
+                  "totalTokensCount": 1678
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837241218-0.7513438626914943",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q12"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837242664-0.6558171427992148",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "  Question 12: What is your company's primary approach to software configuration management? (Multiple-choice question)\n- Version Control System (VCS): 96%\n- Other approaches: 4%\n\nThe vast majority of companies (96%) use a version control system (VCS) as their primary approach to software configuration management. A small percentage (4%) selected \"Other approaches,\" indicating that they employ alternative methods for managing their software configurations. This result suggests a strong focus on VCS among these Turkish companies when it comes to configuring and managing their software development processes.\n\nRegarding the categorical distribution:\n- Version Control System (VCS): 96%\n- Other approaches: 4%",
+                  "fromDraftModel": false,
+                  "tokensCount": 154,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 45.58795640309024,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.197,
+                  "totalTimeSec": 3.4,
+                  "promptTokensCount": 1685,
+                  "predictedTokensCount": 155,
+                  "totalTokensCount": 1840
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837245933-0.7390974927091369",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q18"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837247718-0.8484010225701497",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 18: How do you think your company's software quality standards compare to those of its competitors?\n- Superior: 23%\n- Equal: 35%\n- Inferior: 29%\n- Don't know/Not sure: 13%\n\nWhen comparing their companies' software quality standards to their competitors, only a quarter (23%) of respondents believe that their standards are superior. Nearly half (48%) perceive the standards as equal or similar to those of their competitors, while almost one-third (29%) consider them inferior. A considerable 13% indicated that they are unsure or don't know how their companies' software quality standards compare to those of their competitors. This suggests that there is room for improvement in software quality standards among these Turkish companies relative to their competition.\n\nRegarding the categorical distribution:\n- Superior: 23%\n- Equal: 35%\n- Inferior: 29%\n- Don't know/Not sure: 13%",
+                  "fromDraftModel": false,
+                  "tokensCount": 233,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 45.11353167272608,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.14,
+                  "totalTimeSec": 5.187,
+                  "promptTokensCount": 1846,
+                  "predictedTokensCount": 234,
+                  "totalTokensCount": 2080
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837252731-0.8214515952663027",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q5"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837254596-0.6643383642452589",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "   Question 5: How important is documentation in your company's software development process? (Likert scale question)\n- Very Important: 76%\n- Somewhat Important: 21%\n- Neutral: 1%\n- Not Very Important: 1%\n- Not At All Important: 1%\n\nThe majority of respondents (87%) consider documentation to be either very important or somewhat important in their company's software development process. Only a small percentage (3%) see it as not very important or not at all important. This strong emphasis on documentation highlights the significance placed on organization, traceability, and maintainability within these Turkish companies' software development processes.\n\nRegarding the categorical distribution:\n- Very Important: 76%\n- Somewhat Important: 21%\n- Neutral: 1%\n- Not Very Important: 1%\n- Not At All Important: 1%",
+                  "fromDraftModel": false,
+                  "tokensCount": 212,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 44.95935168023862,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.205,
+                  "totalTimeSec": 4.738,
+                  "promptTokensCount": 2086,
+                  "predictedTokensCount": 213,
+                  "totalTokensCount": 2299
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837259204-0.5391202263719637",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q11"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837260677-0.8141420625858138",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "   Question 11: Which software quality attributes are most important for your company's software products? (Multiple-choice question, respondents could select multiple options)\n- Performance: 65%\n- Security: 74%\n- Usability: 60%\n- Maintainability: 82%\n- Portability: 39%\n- Scalability: 42%\n- Testability: 73%\n- Reliability: 82%\n- Interoperability: 40%\n- Availability: 59%\n\nWhen it comes to software quality attributes, security (74%) and reliability (82%) are the most commonly selected options by respondents, indicating a strong focus on these aspects within their companies' software products. Maintainability (82%) also ranks high, suggesting an emphasis on creating software that is easy to modify and maintain over time. Usability (60%), performance (65%), testability (73%), and availability (59%) are other important qualities for the surveyed Turkish companies' software products. Portability (39%), scalability (42%), interoperability (40%), and availabilities (59%) were less frequently selected but still considered essential to some extent by these companies.\n\nRegarding the categorical distribution:\n- Performance: 65%\n- Security: 74%\n- Usability: 60%\n- Maintainability: 82%\n- Portability: 39%\n- Scalability: 42%\n- Testability: 73%\n- Reliability: 82%\n- Interoperability: 40%\n- Availability: 59%",
+                  "fromDraftModel": false,
+                  "tokensCount": 386,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 44.65855625742189,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.179,
+                  "totalTimeSec": 8.666,
+                  "promptTokensCount": 2305,
+                  "predictedTokensCount": 387,
+                  "totalTokensCount": 2692
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837269213-0.18186968732345432",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q14"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837271076-0.9189970521318447",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "    Question 14: How would you rate the effectiveness of your company's software quality assurance process? (Likert scale question)\n- Very Effective: 36%\n- Effective: 47%\n- Neutral: 9%\n- Ineffective: 5%\n- Very Ineffective: 3%\n\nThe majority of respondents (83%) rated their company's software quality assurance process as effective or very effective. Only a small percentage (12%) considered it ineffective or very ineffective, while another 5% were neutral in their assessment. This positive trend suggests that these Turkish companies have a well-established and effective software quality assurance process in place.\n\nRegarding the categorical distribution:\n- Very Effective: 36%\n- Effective: 47%\n- Neutral: 9%\n- Ineffective: 5%\n- Very Ineffective: 3%",
+                  "fromDraftModel": false,
+                  "tokensCount": 217,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 44.35702538369437,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.327,
+                  "totalTimeSec": 4.915,
+                  "promptTokensCount": 2698,
+                  "predictedTokensCount": 218,
+                  "totalTokensCount": 2916
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837275836-0.620072444034114",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q8"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837277036-0.5327998927650888",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 8: How often does your company perform risk assessments for software projects? (Multiple-choice question)\n- Always: 40%\n- Often: 44%\n- Sometimes: 11%\n- Rarely: 3%\n- Never: 2%\n\nThe survey results show that the majority of companies (84%) perform risk assessments for their software projects frequently, with 40% always and 44% often. A small percentage (11%) reported performing these assessments sometimes, while only 3% rarely or never do so. This indicates a strong focus on identifying potential risks and mitigating them in the software development process within these Turkish companies.\n\nRegarding the categorical distribution:\n- Always: 40%\n- Often: 44%\n- Sometimes: 11%\n- Rarely: 3%\n- Never: 2%",
+                  "fromDraftModel": false,
+                  "tokensCount": 197,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 44.13171453449489,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.192,
+                  "totalTimeSec": 4.487,
+                  "promptTokensCount": 2921,
+                  "predictedTokensCount": 198,
+                  "totalTokensCount": 3119
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837281390-0.06353556269556282",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q17"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837283088-0.3194519690222256",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 17: How would you rate the overall quality of your company's software products? (Likert scale question)\n- Very High: 28%\n- High: 46%\n- Moderate: 19%\n- Low: 5%\n- Very Low: 2%\n\nWhen it comes to the overall quality of their company's software products, over half (74%) of respondents rated them as high or very high. A sizable minority (19%) considered the quality as moderate, while a small percentage (10%) deemed it low or very low. This positive trend indicates that the surveyed Turkish companies produce software products with generally good to excellent quality.\n\nRegarding the categorical distribution:\n- Very High: 28%\n- High: 46%\n- Moderate: 19%\n- Low: 5%\n- Very Low: 2%",
+                  "fromDraftModel": false,
+                  "tokensCount": 203,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 43.73009289343546,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.213,
+                  "totalTimeSec": 4.665,
+                  "promptTokensCount": 3126,
+                  "predictedTokensCount": 204,
+                  "totalTokensCount": 3330
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837287594-0.9806980849371207",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q4"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837289257-0.2629042137266022",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " Question 4: Which software development life cycle model does your company primarily use? (Multiple-choice question)\n- Waterfall: 47%\n- Agile: 36%\n- Hybrid (Waterfall and Agile): 14%\n- Rapid Application Development (RAD): 2%\n- Other: 1%\n\nThe majority of companies surveyed primarily use the waterfall development life cycle model (47%), followed by agile (36%) and hybrid (14%). A small percentage (2%) employ Rapid Application Development (RAD), while only 1% reported using other models. These results suggest that both traditional and modern software development methodologies are represented among these Turkish companies, with a slight preference for the waterfall approach.\n\nRegarding the categorical distribution:\n- Waterfall: 47%\n- Agile: 36%\n- Hybrid (Waterfall and Agile): 14%\n- Rapid Application Development (RAD): 2%\n- Other: 1%",
+                  "fromDraftModel": false,
+                  "tokensCount": 228,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 43.3495718179171,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.204,
+                  "totalTimeSec": 5.283,
+                  "promptTokensCount": 3336,
+                  "predictedTokensCount": 229,
+                  "totalTokensCount": 3565
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837294429-0.512856325102923",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q1"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837295584-0.6427591034868062",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "  Question 1: Which industry does your company primarily operate in? (Multiple-choice question)\n- Banking & Finance: 15%\n- Telecommunications: 9%\n- Government: 8%\n- Manufacturing: 14%\n- Healthcare: 13%\n- IT Services: 20%\n- Retail & E-commerce: 12%\n- Energy & Utilities: 7%\n- Education: 5%\n- Others (incl. Transportation, Construction): 9%\n\nThe most common industries represented in the surveyed Turkish companies are IT Services and Banking & Finance, with 20% and 15%, respectively. Telecommunications, Manufacturing, Healthcare, Retail & E-commerce, Energy & Utilities, Education, and Others (Transportation, Construction) account for smaller percentages of responses, ranging from 9% to 8%. This distribution highlights the diverse range of industries in which these Turkish companies operate, with IT Services and Banking & Finance being particularly well-represented.\n\nRegarding the categorical distribution:\n- Banking & Finance: 15%\n- Telecommunications: 9%\n- Government: 8%\n- Manufacturing: 14%\n- Healthcare: 13%\n- IT Services: 20%\n- Retail & E-commerce: 12%\n- Energy & Utilities: 7%\n- Education: 5%\n- Others (incl. Transportation, Construction): 9%",
+                  "fromDraftModel": false,
+                  "tokensCount": 339,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 42.82803976452489,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.224,
+                  "totalTimeSec": 7.938,
+                  "promptTokensCount": 3571,
+                  "predictedTokensCount": 340,
+                  "totalTokensCount": 3911
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837303408-0.8492466847811008",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q19"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837305277-0.6191903769817594",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "   Question 19: What is your company's primary software development platform? (Multiple-choice question)\n- Web/Cloud-based: 38%\n- Desktop-based: 24%\n- Mobile-based: 20%\n- Embedded Systems: 7%\n- Other: 11%\n\nThe majority of companies surveyed primarily use web or cloud-based software development platforms (38%). Desktop and mobile-based platforms account for smaller percentages, with 24% and 20%, respectively. A small percentage (7%) develop software for embedded systems, while other platforms make up 11% of the responses. These results suggest a strong emphasis on web and cloud-based software development among these Turkish companies, reflecting current technological trends.\n\nRegarding the categorical distribution:\n- Web/Cloud-based: 38%\n- Desktop-based: 24%\n- Mobile-based: 20%\n- Embedded Systems: 7%\n- Other: 11%",
+                  "fromDraftModel": false,
+                  "tokensCount": 232,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 42.58612797639566,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.336,
+                  "totalTimeSec": 5.471,
+                  "promptTokensCount": 3917,
+                  "predictedTokensCount": 233,
+                  "totalTokensCount": 4150
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837310610-0.4931057387412645",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q10"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837312364-0.8017338949053543",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "     Question 10: How much time does your company typically spend on software testing during the development process? (Multiple-choice question)\n- Less than 25%: 14%\n- 26-50%: 32%\n- 51-75%: 31%\n- More than 75%: 23%\n\nThe survey results show that a significant percentage of companies (65%) spend between 26% and 75% of their development time on software testing. A smaller percentage (14%) dedicates less than 25%, while another 23% spend more than 75% of their time on testing. This distribution indicates a strong focus on quality assurance and testing within these Turkish companies, with the majority of respondents dedicating a substantial portion of their development resources to software testing.\n\nRegarding the categorical distribution:\n- Less than 25%: 14%\n- 26-50%: 32%\n- 51-75%: 31%\n- More than 75%: 23%",
+                  "fromDraftModel": false,
+                  "tokensCount": 250,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 42.542029660913244,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.239,
+                  "totalTimeSec": 5.9,
+                  "promptTokensCount": 1977,
+                  "predictedTokensCount": 251,
+                  "totalTokensCount": 2228
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837318102-0.18808121494130692",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q20"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837320518-0.8046096703728292",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "      Question 20: How satisfied are you with your company's current software quality assurance process? (Likert scale question)\n- Very Satisfied: 40%\n- Somewhat Satisfied: 38%\n- Neutral: 14%\n- Somewhat Dissatisfied: 5%\n- Very Dissatisfied: 3%\n\nThe survey results indicate a high level of satisfaction with the current software quality assurance process among these Turkish companies, as over 78% of respondents reported being either very satisfied or somewhat satisfied. A small percentage (14%) were neutral in their assessment, while only 5% and 3% were somewhat dissatisfied or very dissatisfied, respectively. This positive trend suggests that the software quality assurance processes in place within these companies are generally effective and well-regarded by employees.\n\nRegarding the categorical distribution:\n- Very Satisfied: 40%\n- Somewhat Satisfied: 38%\n- Neutral: 14%\n- Somewhat Dissatisfied: 5%\n- Very Dissatisfied: 3%",
+                  "fromDraftModel": false,
+                  "tokensCount": 254,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 42.68736123154946,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.457,
+                  "totalTimeSec": 5.974,
+                  "promptTokensCount": 1977,
+                  "predictedTokensCount": 255,
+                  "totalTokensCount": 2232
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837326329-0.4409630775443567",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q13"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837328450-0.0024664219078796012",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "         Question 13: Which testing tools or frameworks does your company primarily use for automated testing? (Multiple-choice question, multiple answers allowed)\n- JUnit: 48%\n- Selenium WebDriver: 39%\n- TestNG: 22%\n- Appium: 15%\n- Others: 7%\n\nThe survey results show that the most commonly used automated testing tools or frameworks among these Turkish companies are JUnit and Selenium WebDriver, with 48% and 39%, respectively. TestNG is also widely adopted, with 22% of respondents reporting its use. Appium is utilized by a smaller percentage (15%), while other testing tools make up 7%. This distribution highlights the popularity of popular open-source testing frameworks among these companies.\n\nRegarding the categorical distribution for each tool:\n- JUnit: 48%\n- Selenium WebDriver: 39%\n- TestNG: 22%\n- Appium: 15%\n- Others: 7%",
+                  "fromDraftModel": false,
+                  "tokensCount": 236,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 42.57327381362118,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.272,
+                  "totalTimeSec": 5.566,
+                  "promptTokensCount": 1977,
+                  "predictedTokensCount": 237,
+                  "totalTokensCount": 2214
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837333877-0.8726375746604094",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q16"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "mistral-7b-instruct-v0.3"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758837335319-0.12525391575356037",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "             Question 16: Which testing methodology does your company primarily use for software testing? (Multiple-choice question)\n- Test-driven development (TDD): 30%\n- Behavior-driven development (BDD): 22%\n- Agile: 49%\n- Waterfall: 5%\n- Other: 4%\n\nThe survey results show that the most common testing methodology among these Turkish companies is Agile, with 49%. Test-driven development (TDD) and behavior-driven development (BDD) are less widely adopted, with 30% and 22%, respectively. A small percentage (5%) of respondents reported using the Waterfall methodology, while other testing methodologies account for 4%. This distribution suggests that Agile and its related practices, such as TDD and BDD, are popular among these companies, aligning with broader industry trends.\n\nRegarding the categorical distribution:\n- Test-driven development (TDD): 30%\n- Behavior-driven development (BDD): 22%\n- Agile: 49%\n- Waterfall: 5%\n- Other: 4%",
+                  "fromDraftModel": false,
+                  "tokensCount": 259,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+                "identifier": "mistral-7b-instruct-v0.3",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.toolCallStopStrings",
+                      "value": [
+                        "<|eom_id|>",
+                        "<|eom|>"
+                      ]
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ '[INST] ' + message['content'] + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ message['content'] + eos_token}}{% else %}{{ raise_exception('Only user and assistant roles are supported!') }}{% endif %}{% endfor %}"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 42.619271588783825,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.245,
+                  "totalTimeSec": 6.101,
+                  "promptTokensCount": 1977,
+                  "predictedTokensCount": 260,
+                  "totalTokensCount": 2237
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758837341282-0.5232613598676215",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    }
+  ],
+  "usePerChatPredictionConfig": true,
+  "perChatPredictionConfig": {
+    "fields": []
+  },
+  "clientInput": "",
+  "clientInputFiles": [],
+  "userFilesSizeBytes": 682304,
+  "lastUsedModel": {
+    "indexedModelIdentifier": "lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+    "identifier": "mistral-7b-instruct-v0.3",
+    "instanceLoadTimeConfig": {
+      "fields": []
+    },
+    "instanceOperationTimeConfig": {
+      "fields": []
+    }
+  },
+  "notes": [],
+  "plugins": [],
+  "pluginConfigs": {},
+  "disabledPluginTools": [],
+  "looseFiles": []
+}

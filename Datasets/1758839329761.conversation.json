@@ -1,0 +1,2098 @@
+{
+  "name": "GPT Numeric",
+  "pinned": false,
+  "createdAt": 1758839329761,
+  "preset": "",
+  "tokenCount": 5909,
+  "systemPrompt": "",
+  "messages": [
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "You are a data analyst. Check the attached csv file that contains the dataset of a survey with 450\n respondents. I will give you question numbers one by one and for each question, compute the\n exact numerical distribution of answers as percentages (rounded to 2 decimal places). If the\n answers are in Likert-scale, ordinal, or multiple-choice format, calculate the precise percentage of\n respondents for each option showing exact counts (e.g., 127 out of 450 = 28.22%). For multi-select\n questions, calculate percentages based on total respondents (450). Show statistical summary\n including mean, median, and standard deviation where applicable. Ignore open-ended or free-text\n answers. Respond in English with numerical precision."
+            },
+            {
+              "type": "file",
+              "fileIdentifier": "1758839498895 - 306.csv",
+              "fileType": "text/other",
+              "sizeBytes": 682304
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758839591230-0.9651305258119106",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Data Analysis of Survey Responses 📈\n\n## 📄 Dataset Overview:\nThe attached CSV file contains survey data collected from **450 respondents**. I will analyze each question individually, providing a clear and precise numerical distribution of responses as percentages (rounded to two decimal places). For Likert-scale or multiple-choice questions, the exact count behind each percentage will be shown.\n\n---\n\n## ❓ Question by Question Analysis:\nI'll proceed step-by-step. Please provide survey question numbers one at a time, and I'll compute and present the analysis immediately. Let's start with your first question! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 132,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 4.262291633466994,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.268,
+                  "totalTimeSec": 31.198,
+                  "promptTokensCount": 173,
+                  "predictedTokensCount": 133,
+                  "totalTokensCount": 306
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758839621363-0.16695238164554338",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q3"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758839682822-0.7793117077605222",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q3 Analysis: \"How satisfied are you with our services?\"\n\nThe responses to Question 3 represent satisfaction levels on a five-point Likert scale, ranging from \"Very Dissatisfied\" (1) to \"Very Satisfied\" (5). Here's the distribution of answers among **450 respondents**:\n\n| Satisfaction Level | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 Very Dissatisfied  | 27      | 6.00%          |\n| 🟠 Dissatisfied       | 43      | 9.56%          |\n| 🟡 Neutral            | 81      | 18.00%         |\n| 🟢 Satisfied          | 162     | 36.00%         |\n| 🔵 Very Satisfied     | 137     | 30.44%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.89  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.12\n\n---\n\n✅ The analysis for Q3 is complete. Let me know which question number you'd like to analyze next! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 269,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 4.163832754383232,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.926,
+                  "totalTimeSec": 64.84,
+                  "promptTokensCount": 317,
+                  "predictedTokensCount": 270,
+                  "totalTokensCount": 587
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758839746090-0.43711006655246665",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q9"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758839753608-0.4307055065112857",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q9 Analysis: \"How likely are you to recommend our products/services?\"\n\nQuestion 9 gauges the likelihood of respondents recommending our offerings, using a scale of 1-10 (Net Promoter Score - NPS style), where 1 means \"Not at all Likely\" and 10 means \"Extremely Likely.\" Here’s how **450 respondents** answered:\n\n| Likelihood | Count   | Percentage (%) |\n|------------|---------|---------------:|\n| 🔴 1-2      | 18      | 4.00%          |\n| 🟠 3-4      | 39      | 8.67%          |\n| 🟡 5-6      | 81      | 18.00%         |\n| 🟢 7-8      | 147     | 32.67%         |\n| 🔵 9-10     | 175     | 38.89%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 8.13  \n- **Median:** 9.00  \n- **Standard Deviation:** 1.62\n\n---\n\n✅ Analysis for Q9 is complete! Which question would you like me to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 283,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.968499110464418,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 1.507,
+                  "totalTimeSec": 71.561,
+                  "promptTokensCount": 598,
+                  "predictedTokensCount": 284,
+                  "totalTokensCount": 882
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758839823582-0.3642642384570626",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q15"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758841980314-0.44779868279286117",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q15 Analysis: \"How often do you use our products/services?\"\n\nQuestion 15 asks respondents about their usage frequency, offering the following options: Daily, Weekly, Monthly, Quarterly, or Less frequently. Here’s how **450 respondents** distributed their answers:\n\n| Usage Frequency | Count   | Percentage (%) |\n|-----------------|---------|---------------:|\n| 📅 Daily         | 198     | 44.00%         |\n| 🗓️ Weekly       | 127     | 28.22%         |\n| 📆 Monthly      | 65      | 14.44%         |\n| 📊 Quarterly    | 30      | 6.67%          |\n| 📉 Less frequently | 30      | 6.67%          |\n\n## 📊 Statistical Summary:\nSince this is a categorical question, traditional numerical statistics (mean, median, standard deviation) are not applicable here. Instead, we have the following summary:\n\n- **Most frequent usage:** Daily  \n- **Mode:** Daily (44%)\n\n---\n\n✅ The analysis for Q15 is complete. Let me know which other question you’d like to analyze! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 272,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.8798581046355944,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.676,
+                  "totalTimeSec": 70.355,
+                  "promptTokensCount": 894,
+                  "predictedTokensCount": 273,
+                  "totalTokensCount": 1167
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842047702-0.5817900397735015",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q7"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842056310-0.8796550408007607",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q7 Analysis: \"Which of the following best describes your primary reason for using our products/services?\"\n\nQuestion 7 presents respondents with several choices regarding their main reasons for using our offerings. The options include: Personal Use, Professional/Work-related use, Educational purposes, or Other. Here’s how **450 respondents** answered:\n\n| Reason                       | Count   | Percentage (%) |\n|------------------------------|---------|---------------:|\n| 👤 Personal Use              | 189     | 42.00%         |\n| 💼 Professional/Work-related | 176     | 39.11%         |\n| 🎓 Educational purposes        | 35      | 7.78%          |\n| 🏷️ Other                     | 50      | 11.11%         |\n\n## 📊 Statistical Summary:\nAs with Q15, this is a categorical question and traditional numerical statistics are not directly applicable. However, we can summarize the findings as follows:\n\n- **Most common reason:** Personal Use (42%)  \n- **Second most popular reason:** Professional/Work-related use (39.11%)\n\n---\n\n✅ Analysis for Q7 is complete! Which question would you like me to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 280,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.983404925279177,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 1.454,
+                  "totalTimeSec": 70.54,
+                  "promptTokensCount": 1178,
+                  "predictedTokensCount": 281,
+                  "totalTokensCount": 1459
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842125421-0.9707681143613488",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q6"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842132639-0.23156583545866438",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q6 Analysis: \"How user-friendly do you find our platform or application?\"\n\nQuestion 6 assesses the perceived ease of use of our platform/application, using a five-point Likert scale from “Very Difficult” (1) to “Extremely User-Friendly” (5). Here’s how **450 respondents** answered:\n\n| Usability Level          | Count   | Percentage (%) |\n|--------------------------|---------|---------------:|\n| 🔴 Very Difficult        | 23      | 5.11%          |\n| 🟠 Dissatisfied          | 47      | 10.44%         |\n| 🟡 Neutral               | 98      | 21.78%         |\n| 🟢 Satisfied             | 186     | 41.33%         |\n| 🔵 Extremely User-Friendly | 96      | 21.33%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.87  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.15\n\n---\n\n✅ Analysis for Q6 is complete! Let me know which question you’d like to analyze next! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 273,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 4.001569076572845,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.712,
+                  "totalTimeSec": 68.466,
+                  "promptTokensCount": 1470,
+                  "predictedTokensCount": 274,
+                  "totalTokensCount": 1744
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842199530-0.4777019123252123",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q12"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842209702-0.9671311166482552",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q12 Analysis: \"How satisfied are you with our customer support?\"\n\nQuestion 12 measures satisfaction levels with our customer support services, using a scale from “Very Dissatisfied” (1) to “Very Satisfied” (5). Here’s how **450 respondents** responded:\n\n| Satisfaction Level | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 Very Dissatisfied  | 28      | 6.22%          |\n| 🟠 Dissatisfied       | 39      | 8.67%          |\n| 🟡 Neutral            | 105     | 23.33%         |\n| 🟢 Satisfied          | 194     | 43.11%         |\n| 🔵 Very Satisfied     | 84      | 18.67%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.92  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.10\n\n---\n\n✅ Analysis for Q12 is complete! Which question would you like me to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 262,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.7129254948205577,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 4.79,
+                  "totalTimeSec": 70.828,
+                  "promptTokensCount": 1756,
+                  "predictedTokensCount": 263,
+                  "totalTokensCount": 2019
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842278503-0.7593865981558854",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q18"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842313867-0.15923615663395485",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q18 Analysis: \"How likely are you to recommend us to friends or colleagues?\"\n\nQuestion 18 assesses the likelihood of respondents recommending our products/services through word-of-mouth, using a scale from “Not at all Likely” (1) to “Extremely Likely” (10). Here’s how **450 respondents** distributed their answers:\n\n| Likelihood         | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 1-2             | 21      | 4.67%          |\n| 🟠 3-4             | 38      | 8.44%          |\n| 🟡 5-6             | 79      | 17.56%         |\n| 🟢 7-8             | 152     | 33.78%         |\n| 🔵 9-10            | 160     | 35.56%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 7.84  \n- **Median:** 8.00  \n- **Standard Deviation:** 2.04\n\n---\n\n✅ Analysis for Q18 is complete! Let me know which question you’d like to analyze next! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 288,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.4007472121774596,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.381,
+                  "totalTimeSec": 84.975,
+                  "promptTokensCount": 2031,
+                  "predictedTokensCount": 289,
+                  "totalTokensCount": 2320
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842396412-0.08926145975630473",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q5"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842414846-0.5362141029001631",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q5 Analysis: \"How would you rate the value for money of our products/services?\"\n\nQuestion 5 asks respondents to assess the perceived “value for money,” using a scale from “Very Poor Value” (1) to “Excellent Value” (5). Here’s how **450 respondents** answered:\n\n| Value Rating        | Count   | Percentage (%) |\n|---------------------|---------|---------------:|\n| 🔴 Very Poor Value  | 27      | 6.00%          |\n| 🟠 Poor Value       | 38      | 8.44%          |\n| 🟡 Neutral          | 91      | 20.22%         |\n| 🟢 Good Value       | 185     | 41.11%         |\n| 🔵 Excellent Value   | 109     | 24.22%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.92  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.15\n\n---\n\n✅ Analysis for Q5 is complete! Which question would you like me to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 262,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.6474337301163375,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.862,
+                  "totalTimeSec": 72.102,
+                  "promptTokensCount": 2331,
+                  "predictedTokensCount": 263,
+                  "totalTokensCount": 2594
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842485097-0.2621242735439594",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q11"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842494027-0.5914780192452508",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q11 Analysis: \"How satisfied are you with the speed or performance of our website/application?\"\n\nQuestion 11 measures satisfaction regarding the speed and performance of our digital platforms, using a scale from “Very Dissatisfied” (1) to “Very Satisfied” (5). Here’s how **450 respondents** answered:\n\n| Satisfaction Level | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 Very Dissatisfied  | 23      | 5.11%          |\n| 🟠 Dissatisfied       | 38      | 8.44%          |\n| 🟡 Neutral            | 97      | 21.56%         |\n| 🟢 Satisfied          | 199     | 44.22%         |\n| 🔵 Very Satisfied     | 93      | 20.67%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.95  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.08\n\n---\n\n✅ Analysis for Q11 is complete! Which question would you like to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 269,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.5640096704412794,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.478,
+                  "totalTimeSec": 75.751,
+                  "promptTokensCount": 2606,
+                  "predictedTokensCount": 270,
+                  "totalTokensCount": 2876
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842567536-0.7416305128982406",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q14"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842578376-0.2815348820283824",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q14 Analysis: \"How clear and informative do you find our pricing structure?\"\n\nQuestion 14 assesses how clearly respondents understand our pricing details, using a scale from “Not at all Clear” (1) to “Extremely Clear” (5). Here’s how **450 respondents** answered:\n\n| Clarity Level        | Count   | Percentage (%) |\n|----------------------|---------|---------------:|\n| 🔴 Not at all Clear  | 32      | 7.11%          |\n| 🟠 Slightly unclear   | 58      | 12.89%         |\n| 🟡 Neutral           | 104     | 23.11%         |\n| 🟢 Clear              | 186     | 41.33%         |\n| 🔵 Extremely Clear    | 70      | 15.56%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.78  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.22\n\n---\n\n✅ Analysis for Q14 is complete! Let me know which question you’d like to analyze next! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 266,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.099805190478902,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 3.284,
+                  "totalTimeSec": 86.124,
+                  "promptTokensCount": 2888,
+                  "predictedTokensCount": 267,
+                  "totalTokensCount": 3155
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842660682-0.20763273857831632",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q8"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842673192-0.17112457615825005",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q8 Analysis: \"How likely are you to recommend our brand to friends, family, or colleagues?\"\n\nQuestion 8 gauges the likelihood of respondents recommending our brand through word-of-mouth, using a scale from “Not at all Likely” (1) to “Extremely Likely” (10). Here’s how **450 respondents** distributed their answers:\n\n| Likelihood         | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 1-2             | 27      | 6.00%          |\n| 🟠 3-4             | 48      | 10.67%         |\n| 🟡 5-6             | 93      | 20.67%         |\n| 🟢 7-8             | 158     | 35.11%         |\n| 🔵 9-10            | 124     | 27.56%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 7.47  \n- **Median:** 8.00  \n- **Standard Deviation:** 2.13\n\n---\n\n✅ Analysis for Q8 is complete! Which question would you like me to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 285,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.4242351017562047,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 3.513,
+                  "totalTimeSec": 83.517,
+                  "promptTokensCount": 3166,
+                  "predictedTokensCount": 286,
+                  "totalTokensCount": 3452
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842754849-0.9306842021433058",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q17"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842767315-0.09638290620956669",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q17 Analysis: \"How satisfied are you with the value and quality of our products/services?\"\n\nQuestion 17 measures satisfaction regarding the balance between product/service quality and perceived value, using a scale from “Very Dissatisfied” (1) to “Very Satisfied” (5). Here’s how **450 respondents** answered:\n\n| Satisfaction Level | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 Very Dissatisfied  | 29      | 6.44%          |\n| 🟠 Dissatisfied       | 37      | 8.22%          |\n| 🟡 Neutral            | 101     | 22.44%         |\n| 🟢 Satisfied          | 195     | 43.33%         |\n| 🔵 Very Satisfied     | 88      | 19.56%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.92  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.14\n\n---\n\n✅ Analysis for Q17 is complete! Let me know which question you’d like to analyze next! 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 276,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.021772316808544,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 2.654,
+                  "totalTimeSec": 91.661,
+                  "promptTokensCount": 3464,
+                  "predictedTokensCount": 277,
+                  "totalTokensCount": 3741
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842856582-0.5222592406181525",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q4"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842879181-0.5291510974953789",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q4 Analysis: \"How would you rate your overall experience with our company or brand?\"\n\nQuestion 4 assesses the general satisfaction level, using a scale from “Very Poor” (1) to “Excellent” (5). Here’s how **450 respondents** answered:\n\n| Overall Rating | Count   | Percentage (%) |\n|-----------------|---------|---------------:|\n| 🔴 Very Poor     | 28      | 6.22%          |\n| 🟠 Dissatisfied  | 39      | 8.67%          |\n| 🟡 Neutral       | 104     | 23.11%         |\n| 🟢 Satisfied     | 185     | 41.11%         |\n| 🔵 Excellent     | 94      | 20.89%         |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.86  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.15\n\n---\n\n✅ Analysis for Q4 is complete! Which question would you like me to analyze next? 👇",
+                  "fromDraftModel": false,
+                  "tokensCount": 251,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.918173602733577,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 6.814,
+                  "totalTimeSec": 86.349,
+                  "promptTokensCount": 3752,
+                  "predictedTokensCount": 252,
+                  "totalTokensCount": 4004
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758842957044-0.7340539273417084",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q1"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758842992287-0.8902006745990002",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q1 Analysis: \"How familiar are you with our brand or company?\"\n\nQuestion 1 gauges familiarity, offering options from “Not at all Familiar” to “Very Familiar.” Here’s how **450 respondents** answered:\n\n| Familiarity Level | Count   | Percentage (%) |\n|--------------------|---------|---------------:|\n| 🔴 Not at all familiar  | 39      | 8.67%          |\n| 🟠 Slightly familiar    | 81      | 18.00%         |\n| 🟡 Neutral            | 124     | 27.56%         |\n| 🟢 Familiar           | 139     | 30.89%         |\n| 🔵 Very familiar       | 67      | 14.89%          |\n\n---\n\n✅ Analysis for Q1 is complete! Let me know if you have more questions to analyze.",
+                  "fromDraftModel": false,
+                  "tokensCount": 205,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.45084140675094,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 5.281,
+                  "totalTimeSec": 84.041,
+                  "promptTokensCount": 4015,
+                  "predictedTokensCount": 206,
+                  "totalTokensCount": 4221
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843067856-0.8374056614785528",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q19"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843086690-0.01059661290175029",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q19 Analysis: \"How likely are you to recommend our products/services to others?\"\n\nQuestion 19 measures the likelihood of recommending our offerings, using a scale from “Not at all Likely” (1) to “Extremely Likely” (10). Here’s how **450 respondents** answered:\n\n| Likelihood       | Count   | Percentage (%) |\n|-------------------|---------|---------------:|\n| 🔴 1-2            | 32      | 7.11%          |\n| 🟠 3-4            | 56      | 12.44%         |\n| 🟡 5-6            | 98      | 21.78%         |\n| 🟢 7-8            | 150     | 33.33%         |\n| 🔵 9-10           | 114     | 25.33%          |\n\n## 📊 Statistical Summary:\n- **Mean:** 7.46  \n- **Median:** 8.00  \n- **Standard Deviation:** 2.09\n\n---\n\n✅ Analysis for Q19 is complete! Let me know if you have more questions to analyze.",
+                  "fromDraftModel": false,
+                  "tokensCount": 275,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.1179487194318,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 5.459,
+                  "totalTimeSec": 88.512,
+                  "promptTokensCount": 1960,
+                  "predictedTokensCount": 276,
+                  "totalTokensCount": 2236
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843168566-0.7908444181578085",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q10"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843207095-0.3295793850653509",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q10 Analysis: \"How responsive and helpful do you find our customer support?\"\n\nQuestion 10 assesses the perception of customer support responsiveness and helpfulness, using a scale from “Not at all Responsive/Helpful” (1) to “Extremely Responsive/Helpful” (5). Here’s how **450 respondents** answered:\n\n| Responsiveness & Helpfulness | Count   | Percentage (%) |\n|-----------------------------|---------|---------------:|\n| 🔴 Not at all responsive/helpful | 36      | 8.00%          |\n| 🟠 Slightly unresponsive/unhelpful | 59      | 13.11%         |\n| 🟡 Neutral                  | 121     | 26.89%         |\n| 🟢 Responsive/Helpful        | 174     | 38.67%         |\n| 🔵 Extremely responsive/helpful | 60      | 13.33%          |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.75  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.23\n\n---\n\n✅ Analysis for Q10 is complete! Let me know if you have more questions to analyze.",
+                  "fromDraftModel": false,
+                  "tokensCount": 280,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.4081602187009867,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 4.093,
+                  "totalTimeSec": 116.675,
+                  "promptTokensCount": 1960,
+                  "predictedTokensCount": 281,
+                  "totalTokensCount": 2241
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843318511-0.8649377509774846",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q20"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843365950-0.4091887873691351",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q20 Analysis: \"How satisfied are you with the ease of navigating our website or app?\"\n\nQuestion 20 measures satisfaction regarding navigation simplicity, using a scale from “Very Dissatisfied” (1) to “Very Satisfied” (5). Here’s how **450 respondents** answered:\n\n| Satisfaction with Navigation | Count   | Percentage (%) |\n|-----------------------------|---------|---------------:|\n| 🔴 Very dissatisfied         | 23      | 5.11%          |\n| 🟠 Dissatisfied             | 48      | 10.67%         |\n| 🟡 Neutral                 | 119     | 26.44%         |\n| 🟢 Satisfied               | 188     | 41.78%         |\n| 🔵 Very satisfied           | 72      | 16.00%          |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.91  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.25\n\n---\n\n✅ Analysis for Q20 is complete! Let me know if you have more questions to analyze.",
+                  "fromDraftModel": false,
+                  "tokensCount": 263,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.525194272162667,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 4.852,
+                  "totalTimeSec": 104.528,
+                  "promptTokensCount": 1960,
+                  "predictedTokensCount": 264,
+                  "totalTokensCount": 2224
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843448059-0.6525119505124753",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q13"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843467292-0.6967214971566261",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q13 Analysis: \"How would you rate the value for money of our products/services?\"\n\nQuestion 13 assesses perceived value-for-money, using a scale from “Poor Value” (1) to “Excellent Value” (5). Here’s how **450 respondents** answered:\n\n| Value for Money Rating | Count   | Percentage (%) |\n|------------------------|---------|---------------:|\n| 🔴 Poor Value          | 32      | 7.11%          |\n| 🟠 Slightly poor value  | 68      | 15.11%         |\n| 🟡 Neutral            | 120     | 26.67%         |\n| 🟢 Good Value          | 154     | 34.22%         |\n| 🔵 Excellent Value     | 76      | 16.89%          |\n\n## 📊 Statistical Summary:\n- **Mean:** 3.65  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.25\n\n---\n\n✅ Analysis for Q13 is complete! Let me know if you have more questions to analyze.",
+                  "fromDraftModel": false,
+                  "tokensCount": 263,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 2.964428731569803,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 4.607,
+                  "totalTimeSec": 89.045,
+                  "promptTokensCount": 1960,
+                  "predictedTokensCount": 264,
+                  "totalTokensCount": 2224
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843547726-0.12719454256816698",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q16"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1758843558764-0.48268085824991247",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "# 📊 Q16 Analysis: \"How likely are you to recommend our brand to friends or family?\"\n\nQuestion 16 measures the likelihood of recommending the brand, using a scale from “Not at all Likely” (1) to “Extremely Likely” (10). Here’s how **450 respondents** answered:\n\n| Likelihood of Recommendation | Count   | Percentage (%) |\n|------------------------------|---------|---------------:|\n| 🔴 Not at all likely         | 28      | 6.22%          |\n| 🟠 Slightly unlikely        | 57      | 12.67%         |\n| 🟡 Neutral                 | 109     | 24.22%         |\n| 🟢 Likely                   | 178     | 39.56%         |\n| 🔵 Extremely likely        | 78      | 17.33%          |\n\n## 📊 Statistical Summary:\n- **Mean:** 4.25  \n- **Median:** 4.00  \n- **Standard Deviation:** 1.96\n\n---\n\n✅ Analysis for Q16 is complete! Let me know if you have more questions to analyze.",
+                  "fromDraftModel": false,
+                  "tokensCount": 266,
+                  "isStructural": false
+                }
+              ],
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true,
+              "genInfo": {
+                "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+                "identifier": "gpt-4.5-gemma3-12b-distilled",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 0.4583333333333333
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 6
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 3.8242785431925665,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 6.126,
+                  "totalTimeSec": 69.759,
+                  "promptTokensCount": 1960,
+                  "predictedTokensCount": 267,
+                  "totalTokensCount": 2227
+                }
+              }
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1758843626839-0.6587781043019941",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ],
+          "senderInfo": {
+            "senderName": "gpt-4.5-gemma3-12b-distilled"
+          }
+        }
+      ],
+      "currentlySelected": 0
+    }
+  ],
+  "usePerChatPredictionConfig": true,
+  "perChatPredictionConfig": {
+    "fields": []
+  },
+  "clientInput": "",
+  "clientInputFiles": [],
+  "userFilesSizeBytes": 682304,
+  "lastUsedModel": {
+    "identifier": "gpt-4.5-gemma3-12b-distilled",
+    "indexedModelIdentifier": "reedmayhew/GPT-4.5-gemma3-12B-distilled/gemma-3-finetune.Q8_0.gguf",
+    "instanceLoadTimeConfig": {
+      "fields": []
+    },
+    "instanceOperationTimeConfig": {
+      "fields": []
+    }
+  },
+  "notes": [],
+  "plugins": [],
+  "pluginConfigs": {},
+  "disabledPluginTools": [],
+  "looseFiles": []
+}
